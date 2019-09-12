@@ -1,0 +1,17 @@
+﻿<Window x:Class="CJGLXT.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CJGLXT.App"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="750" Width="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock x:Name="textblock" Text="Test" HorizontalAlignment="Stretch"></TextBlock>
+            <Button Content="Test" Click="ButtonBase_OnClick"></Button>
+            <Button Click="ButtonBase_OnClick1">Navgate</Button>
+            <Frame x:Name="frame" Height="600" NavigationUIVisibility="Visible"></Frame>
+        </StackPanel>
+    </Grid>
+</Window>
