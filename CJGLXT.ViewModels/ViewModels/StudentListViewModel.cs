@@ -10,17 +10,21 @@ namespace CJGLXT.ViewModels.ViewModels
 {
     public class StudentListViewModel:GenericListViewModel<StudentModel>
     {
-        public StudentListViewModel(IDialogService dialogService,IStudentService studentService) : base(dialogService)
+        public StudentListViewModel(IDialogService dialogService,IStudentService studentService,IStudentEvaluationService studentEvaluationService) : base(dialogService)
         {
             StudentService = studentService;
             StudentDetailsViewModel = new StudentDetailsViewModel(studentService,dialogService);
-            Args=new StudentDetailsArgs();
+            StudentEvaluationViewModel = new StudentEvaluationViewModel(studentEvaluationService, dialogService);
+            SArgs = new StudentDetailsArgs();
+            EArgs = new StudentEvaluationArgs();
             Refresh();
         }
 
         public IStudentService StudentService { get; }
         public StudentDetailsViewModel StudentDetailsViewModel { get; set; }
-        public StudentDetailsArgs Args { get; set; }
+        public StudentEvaluationViewModel StudentEvaluationViewModel { get; set; }
+        public StudentDetailsArgs SArgs { get; set; }
+        public StudentEvaluationArgs EArgs { get; set; }
 
         protected override void OnNew()
         {
@@ -42,14 +46,17 @@ namespace CJGLXT.ViewModels.ViewModels
 
         public async void OnSelected()
         {
-            await StudentDetailsViewModel.LoadAsync(Args);
+            await StudentDetailsViewModel.LoadAsync(SArgs);
+            await StudentEvaluationViewModel.LoadAsync(EArgs);
         }
 
         private async Task<bool> RefreshAsync()
         {
             Items = null;
-            Args.StudentId = null;
-            await StudentDetailsViewModel.LoadAsync(Args);
+            SArgs.StudentId = null;
+            EArgs.StudentId = null;
+            await StudentDetailsViewModel.LoadAsync(SArgs);
+            await StudentEvaluationViewModel.LoadAsync(EArgs);
 
             try
             {

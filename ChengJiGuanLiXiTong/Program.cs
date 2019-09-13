@@ -5,6 +5,7 @@ using ChengJiGuanLiXiTong.Application;
 using ChengJiGuanLiXiTong.Builder;
 using ChengJiGuanLiXiTong.Builder.Middlewares;
 using CJGLXT.Data.DataContexts;
+using CJGLXT.Data.DataServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChengJiGuanLiXiTong
@@ -17,38 +18,16 @@ namespace ChengJiGuanLiXiTong
             {
                 using (var db = new SqlServerDb())
                 {
-                    var students = db.Students.Include(x => x.CourseRecords)
-                        .ThenInclude(cd=>cd.Course)
-                        .ToList();
-                    var courses = db.Courses.Include(x => x.CourseRecords)
-                        .ThenInclude(cd=>cd.Student)
-                        .ToList();
-                    Console.WriteLine("Students_______________________________________________________");
-                    foreach (var s in students)
-                    {
-                        Console.WriteLine("StudentId\t\tStudentName\tSex\t\tAge");
-                        Console.WriteLine($"{s.StudentId}\t\t{s.Name}\t\t{s.Sex}\t\t{s.Age}\n\n");
-                        Console.WriteLine("CourseId\tCourseName\t\tScore");
-                        foreach (var c in s.CourseRecords)
-                        {
-                            Console.WriteLine($"{c.CourseId}\t\t{c.Course.Name}\t\t{c.Score}");
-                        }
-                        Console.WriteLine("====================================================");
-                    }
 
-                    Console.WriteLine("Courses_______________________________________________________");
-                    foreach (var c in courses)
+                    var record = db.CourseRecords.Find("221701340", 6);
+                    if (record != null)
                     {
-                        Console.WriteLine("CourseId\tCourseName\t\tDescription");
-                        Console.WriteLine($"{c.CourseId}\t\t{c.Name}\t\t{c.Description}\n\n");
-                        Console.WriteLine("StudentId\t\tStudentName\tScore");
-                        foreach (var cd in c.CourseRecords)
-                        {
-                            Console.WriteLine($"{cd.StudentId}\t\t{cd.Student.Name}\t\t{cd.Score}");
-                        }
-                        Console.WriteLine("====================================================");
+                        Console.WriteLine(record.Score);
                     }
-
+                    else
+                    {
+                        Console.WriteLine("Not Found!");
+                    }
                 }
 
             }

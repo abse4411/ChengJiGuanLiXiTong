@@ -9,8 +9,11 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 {
     public class StudentEvaluationViewModel:GenericDetailsViewModel<StudentEvaluationModel>
     {
-        public StudentEvaluationViewModel(IDialogService dialogService) : base(dialogService)
+        public IStudentEvaluationService StudentEvaluationService { get; }
+
+        public StudentEvaluationViewModel(IDialogService dialogService,IStudentEvaluationService studentEvaluationService) : base(dialogService)
         {
+            StudentEvaluationService = studentEvaluationService;
         }
 
         public override bool ItemIsNew { get; }

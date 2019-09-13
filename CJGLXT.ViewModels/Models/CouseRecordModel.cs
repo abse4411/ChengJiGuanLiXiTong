@@ -15,6 +15,8 @@ namespace CJGLXT.ViewModels.Models
 
         public int? Score { get; set; }
 
+        public bool IsNew { get; set; } = true;
+
         public static CouseRecordModel CreateEmpty() => new CouseRecordModel { CourseId = -1, StudentId=null, IsEmpty = true };
 
         public override void Merge(ObservableObject source)
@@ -32,6 +34,7 @@ namespace CJGLXT.ViewModels.Models
                 CourseId = source.CourseId;
                 StudentId = source.StudentId;
                 Score = source.Score;
+                IsNew = source.IsNew;
             }
         }
     }

@@ -143,7 +143,6 @@ namespace CJGLXT.ViewModels.ViewModels.Common
                 Item.NotifyChanges();
                 NotifyPropertyChanged(nameof(Title));
                 EditableItem = Item;
-                NotifyPropertyChanged(nameof(ItemIsNew));
 
                 if (isNew)
                 {

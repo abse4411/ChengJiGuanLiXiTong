@@ -6,7 +6,7 @@ using CJGLXT.Data.Data;
 
 namespace CJGLXT.Data.DataServices
 {
-    public interface IDataService: IDisposable
+    public interface IDataService : IDisposable
     {
         Task<Student> GetStudentAsync(string id);
         Task<IList<Student>> GetStudentsAsync();
@@ -27,20 +27,17 @@ namespace CJGLXT.Data.DataServices
         Task<IList<CourseRecord>> GetStudentCourseRecordsAsync(string sid);
         Task<IList<CourseRecord>> GetCourseRecordsAsync(int cid);
         Task<IList<CourseRecord>> GetCourseRecordsAsync();
-        Task<int> AddCourseRecordAsync(CourseRecord record);
-        Task<int> UpdateCourseRecordAsync(CourseRecord record);
+        Task<int> AddOrUpdateCourseRecordAsync(CourseRecord record);
         Task<int> DeleteCourseRecordAsync(CourseRecord record);
 
         Task<StudentEvaluation> GetStudentEvaluationAsync(string tid, string sid);
         Task<StudentEvaluation> GetStudentEvaluationsAsync(string tid);
-        Task<int> AddStudentEvaluationAsync(StudentEvaluation evaluation);
-        Task<int> UpdateStudentEvaluationAsync(StudentEvaluation evaluation);
+        Task<int> AddOrUpdateStudentEvaluationAsync(StudentEvaluation evaluation);
         Task<int> DeleteStudentEvaluationAsync(StudentEvaluation evaluation);
 
         Task<TeacherEvaluation> GetTeacherEvaluationAsync(string tid, string sid);
         Task<TeacherEvaluation> GetTeacherEvaluationsAsync(string sid);
-        Task<int> AddTeacherEvaluationAsync(TeacherEvaluation evaluation);
-        Task<int> UpdateTeacherEvaluationAsync(TeacherEvaluation evaluation);
+        Task<int> AddOrUpdateTeacherEvaluationAsync(TeacherEvaluation evaluation);
         Task<int> DeleteTeacherEvaluationAsync(TeacherEvaluation evaluation);
     }
 }

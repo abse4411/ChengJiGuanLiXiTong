@@ -10,7 +10,7 @@ using CJGLXT.ViewModels.Services;
 
 namespace CJGLXT.App.Services
 {
-    class StudentService:IStudentService
+    class StudentService : IStudentService
     {
         private readonly IDataServiceFactory _dataServiceFactory;
 
@@ -21,9 +21,9 @@ namespace CJGLXT.App.Services
         public async Task<StudentModel> GetStudentAsync(string id)
         {
             Student student;
-            using (var dataService=_dataServiceFactory.CreateDataService())
+            using (var dataService = _dataServiceFactory.CreateDataService())
             {
-                student =await dataService.GetStudentAsync(id);
+                student = await dataService.GetStudentAsync(id);
             }
             if (student != null)
                 return CreateStudentModel(student);
@@ -65,7 +65,7 @@ namespace CJGLXT.App.Services
                 if (student != null)
                 {
                     UpdateStudentFromModel(student, model);
-                    var result=await dataService.AddOrUpdateStudentAsync(student);
+                    var result = await dataService.AddOrUpdateStudentAsync(student);
                     model.Merge(await GetStudentAsync(student.StudentId));
                     return result;
                 }

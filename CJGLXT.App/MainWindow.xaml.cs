@@ -28,11 +28,16 @@ namespace CJGLXT.App
         public MainWindow()
         {
             Startup.ConfigureAsync();
+            User = new UserInfo();
+            User.UserType = UserType.Teacher;
+            User.UserId = "1";
             InitializeComponent();
             Frame = this.frame;
         }
 
         public static Frame Frame { get; private set; }
+
+        public static UserInfo User { get; set; }
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {

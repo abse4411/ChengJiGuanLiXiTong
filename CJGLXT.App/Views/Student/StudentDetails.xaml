@@ -4,58 +4,52 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CJGLXT.App.Views.Student"
-             xmlns:cvt="clr-namespace:CJGLXT.App.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid  IsEnabled="{Binding IsEnabled,Mode=TwoWay}" >
-        <Grid.Resources>
-            <cvt:Int32Converter x:Key="Int32Converter"/>
-            <cvt:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-        </Grid.Resources>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-            <RowDefinition Height="Auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Border Grid.Row="0"  Style="{StaticResource MyBorder}">
-            <Label FontSize="24" Grid.Row="0" Content="{Binding ViewModel.Title,Mode=OneWay}"></Label>
-        </Border>
-        <Border Grid.Row="1"  Style="{StaticResource MyBorder}">
-            <StackPanel  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <Label Style="{StaticResource MyLabel}">学生ID</Label>
-                <TextBox Style="{StaticResource MyTextBox}" Text="{Binding ViewModel.EditableItem.StudentId,Mode=OneWay}"
+        <DockPanel>
+            <Border   Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
+                <Label FontSize="24" Grid.Row="0" Content="{Binding ViewModel.Title,Mode=OneWay}"></Label>
+            </Border>
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" DockPanel.Dock="Top">
+                <Border VerticalAlignment="Stretch" Style="{StaticResource MyBorder}">
+                    <StackPanel  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <Label Style="{StaticResource MyLabel}">学生ID</Label>
+                        <TextBox Style="{StaticResource MyTextBox}" Text="{Binding ViewModel.EditableItem.StudentId,Mode=OneWay}"
                          IsEnabled="False" ></TextBox>
-                <Label Style="{StaticResource MyLabel}">学生姓名</Label>
-                <TextBox Style="{StaticResource MyTextBox}" Text="{Binding ViewModel.EditableItem.Name,Mode=TwoWay}"
+                        <Label Style="{StaticResource MyLabel}">学生姓名</Label>
+                        <TextBox Style="{StaticResource MyTextBox}" Text="{Binding ViewModel.EditableItem.Name,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
-                <Label Style="{StaticResource MyLabel}">学生年龄</Label>
-                <TextBox Style="{DynamicResource MyTextBox}" Text="{Binding ViewModel.EditableItem.Age,Mode=TwoWay,Converter={StaticResource Int32Converter}}"
+                        <Label Style="{StaticResource MyLabel}">学生年龄</Label>
+                        <TextBox Style="{DynamicResource MyTextBox}" Text="{Binding ViewModel.EditableItem.Age,Mode=TwoWay,Converter={StaticResource Int32Converter}}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
-                <Label Style="{StaticResource MyLabel}">学生性别</Label>
-                <TextBox Style="{StaticResource MyTextBox}"  Text="{Binding ViewModel.EditableItem.Sex,Mode=TwoWay}"
+                        <Label Style="{StaticResource MyLabel}">学生性别</Label>
+                        <TextBox Style="{StaticResource MyTextBox}"  Text="{Binding ViewModel.EditableItem.Sex,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
-            </StackPanel>
-        </Border>
-        <Border Grid.Row="2" Style="{StaticResource MyBorder}">
-            <StackPanel Orientation="Horizontal"
+                    </StackPanel>
+                </Border>
+                <Border VerticalAlignment="Bottom" Style="{StaticResource MyBorder}">
+                    <StackPanel Orientation="Horizontal"
                         Height="Auto"
                         HorizontalAlignment="Right">
-                <Button Margin="4" Style="{StaticResource RoundButton}" Command="{Binding ViewModel.SaveCommand}" 
+                        <Button Margin="4" Style="{StaticResource RoundButton}" Command="{Binding ViewModel.SaveCommand}" 
                         Visibility="{Binding ViewModel.IsEditMode,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                 >保存</Button>
-                <Button Margin="4" Style="{DynamicResource RoundButton}" Command="{Binding ViewModel.EditCommand}"
+                        <Button Margin="4" Style="{DynamicResource RoundButton}" Command="{Binding ViewModel.EditCommand}"
                         Visibility="{Binding ViewModel.IsReadOnly,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                 >编辑</Button>
-                <Button Margin="4" Style="{StaticResource RoundButton}" Command="{Binding ViewModel.CancelCommand}"
+                        <Button Margin="4" Style="{StaticResource RoundButton}" Command="{Binding ViewModel.CancelCommand}"
                         Visibility="{Binding ViewModel.IsEditMode,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                 >取消</Button>
-                <Button Margin="4" Style="{StaticResource RoundButton}"  Command="{Binding ViewModel.DeleteCommand}"
+                        <Button Margin="4" Style="{StaticResource RoundButton}"  Command="{Binding ViewModel.DeleteCommand}"
                         Visibility="{Binding ViewModel.IsReadOnly,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                 >删除</Button>
-            </StackPanel>
-        </Border>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </DockPanel>
     </Grid>
 </UserControl>

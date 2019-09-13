@@ -6,12 +6,14 @@
         xmlns:local="clr-namespace:CJGLXT.App"
         mc:Ignorable="d"
         Title="MainWindow" Height="750" Width="800">
-    <Grid>
-        <StackPanel>
-            <TextBlock x:Name="textblock" Text="Test" HorizontalAlignment="Stretch"></TextBlock>
-            <Button Content="Test" Click="ButtonBase_OnClick"></Button>
-            <Button Click="ButtonBase_OnClick1">Navgate</Button>
-            <Frame x:Name="frame" Height="600" NavigationUIVisibility="Visible"></Frame>
-        </StackPanel>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <TextBlock x:Name="textblock" Text="Test" HorizontalAlignment="Stretch"></TextBlock>
+                <Button Content="Test" Click="ButtonBase_OnClick"></Button>
+                <Button Click="ButtonBase_OnClick1">Navgate</Button>
+            </StackPanel>
+            <Frame x:Name="frame" DockPanel.Dock="Bottom" Background="GreenYellow" VerticalAlignment="Stretch"  NavigationUIVisibility="Visible"></Frame>
+        </DockPanel>
     </Grid>
 </Window>

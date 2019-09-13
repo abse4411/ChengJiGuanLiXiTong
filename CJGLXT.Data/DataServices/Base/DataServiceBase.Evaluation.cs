@@ -20,16 +20,16 @@ namespace CJGLXT.Data.DataServices.Base
             return await _dataSource.StudentEvaluations.Where(x => x.TeacherId.Equals(tid))
                 .AsNoTracking().FirstOrDefaultAsync();
         }
-        public async Task<int> AddStudentEvaluationAsync(StudentEvaluation evaluation)
+        public async Task<int> AddOrUpdateStudentEvaluationAsync(StudentEvaluation evaluation)
         {
-            await _dataSource.StudentEvaluations.AddAsync(evaluation);
+            if (_dataSource.StudentEvaluations.Find( evaluation.TeacherId, evaluation.StudentId) != null)
+                _dataSource.StudentEvaluations.Update(evaluation);
+            else
+                await _dataSource.StudentEvaluations.AddAsync(evaluation);
+
             return await _dataSource.SaveChangesAsync();
         }
-        public async Task<int> UpdateStudentEvaluationAsync(StudentEvaluation evaluation)
-        {
-             _dataSource.StudentEvaluations.Update(evaluation);
-             return await _dataSource.SaveChangesAsync();
-        }
+
         public async Task<int> DeleteStudentEvaluationAsync(StudentEvaluation evaluation)
         {
             _dataSource.StudentEvaluations.Remove(evaluation);
@@ -46,14 +46,13 @@ namespace CJGLXT.Data.DataServices.Base
             return await _dataSource.TeacherEvaluations.Where(x => x.StudentId.Equals(sid))
                 .AsNoTracking().FirstOrDefaultAsync();
         }
-        public async Task<int> AddTeacherEvaluationAsync(TeacherEvaluation evaluation)
+        public async Task<int> AddOrUpdateTeacherEvaluationAsync(TeacherEvaluation evaluation)
         {
-            await _dataSource.TeacherEvaluations.AddAsync(evaluation);
-            return await _dataSource.SaveChangesAsync();
-        }
-        public async Task<int> UpdateTeacherEvaluationAsync(TeacherEvaluation evaluation)
-        {
-            _dataSource.TeacherEvaluations.Update(evaluation);
+            if (_dataSource.TeacherEvaluations.Find(evaluation.TeacherId, evaluation.StudentId) != null)
+                _dataSource.TeacherEvaluations.Update(evaluation);
+            else
+                await _dataSource.TeacherEvaluations.AddAsync(evaluation);
+
             return await _dataSource.SaveChangesAsync();
         }
         public async Task<int> DeleteTeacherEvaluationAsync(TeacherEvaluation evaluation)

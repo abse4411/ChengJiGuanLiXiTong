@@ -9,7 +9,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StudentView">
 
-    <Grid>
+    <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="2*"></RowDefinition>
@@ -45,6 +45,7 @@
                 <ListView x:Name="list" 
                           DockPanel.Dock="Bottom"
                           BorderThickness="0"
+                          Background="Transparent"
                           SelectionMode="Single" 
                           SelectionChanged="Selector_OnSelected"
                           ItemsSource="{Binding ViewModel.Items}">
@@ -64,7 +65,10 @@
                 </ListView>
             </Border>
         </DockPanel>
-        <Border
+        <view:StudentEvaluationDetails x:Name="Evaluation" Grid.Row="2" Grid.ColumnSpan="2">
+
+        </view:StudentEvaluationDetails>
+        <!--<Border
             Style="{StaticResource MyBorder}"
             Grid.Row="2" 
             Grid.Column="0" 
@@ -73,6 +77,6 @@
                 <Button Background="Transparent" BorderThickness="0" Click="ButtonBase_OnClick">Change ViewModel</Button>
                 <Button Command="{Binding ViewModel.RefreshCommand}">Load</Button>
             </StackPanel>
-        </Border>
+        </Border>-->
     </Grid>
 </Page>

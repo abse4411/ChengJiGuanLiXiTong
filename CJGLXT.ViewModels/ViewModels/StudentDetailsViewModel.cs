@@ -59,10 +59,6 @@ namespace CJGLXT.ViewModels.ViewModels
                 }
             }
         }
-        public void Unload()
-        {
-            ViewModelArgs.StudentId = Item?.StudentId ?? string.Empty;
-        }
 
         protected override async Task<bool> SaveItemAsync(StudentModel model)
         {

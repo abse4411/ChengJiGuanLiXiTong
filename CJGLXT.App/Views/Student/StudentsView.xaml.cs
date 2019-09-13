@@ -27,7 +27,7 @@ namespace CJGLXT.App.Views.Student
         {
             ViewModel = ServiceLocator.Current().GetService<StudentListViewModel>();
             StudentDetailsViewModel = ViewModel.StudentDetailsViewModel;
-
+            StudentEvaluationViewModel = ViewModel.StudentEvaluationViewModel;
             this.DataContext = this;
             InitializeComponent();
             StudentDetailsViewModel = null;
@@ -36,6 +36,7 @@ namespace CJGLXT.App.Views.Student
         public StudentListViewModel ViewModel { get; }
 
         public static StudentDetailsViewModel StudentDetailsViewModel { get; private set; }
+        public static StudentEvaluationViewModel StudentEvaluationViewModel { get; private set; }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
@@ -46,7 +47,9 @@ namespace CJGLXT.App.Views.Student
         {
             if (this.list.SelectedItem is StudentModel model)
             {
-                ViewModel.Args.StudentId = model.StudentId;
+                ViewModel.SArgs.StudentId = model.StudentId;
+                ViewModel.EArgs.StudentId = model.StudentId;
+                ViewModel.EArgs.TeacherId = MainWindow.User.UserId;
                 ViewModel.OnSelected();
             }
         }
@@ -54,7 +57,7 @@ namespace CJGLXT.App.Views.Student
         private void NewItem(object sender, RoutedEventArgs e)
         {
             this.list.SelectedItem = null;
-            ViewModel.Args.StudentId = null;
+            ViewModel.SArgs.StudentId = null;
             ViewModel.OnSelected();
         }
     }

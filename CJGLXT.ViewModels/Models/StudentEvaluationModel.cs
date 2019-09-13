@@ -17,7 +17,7 @@ namespace CJGLXT.ViewModels.Models
 
         public static StudentEvaluationModel CreateEmpty() => new StudentEvaluationModel {  Teacher = null, IsEmpty = true };
 
-        public bool IsNew => string.IsNullOrWhiteSpace(TeacherId);
+        public bool IsNew { get; set; } = true;
 
         public override void Merge(ObservableObject source)
         {
@@ -34,6 +34,7 @@ namespace CJGLXT.ViewModels.Models
                 TeacherId = source.TeacherId;
                 StudentId = source.StudentId;
                 Content = source.Content;
+                IsNew = source.IsNew;
             }
         }
     }
