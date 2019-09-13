@@ -25,7 +25,7 @@ namespace CJGLXT.App.Views.Student
     {
         public StudentDetails()
         {
-            this.ViewModel = StudentView.ViewModel;
+            this.ViewModel = StudentsView.StudentDetailsViewModel;
             this.DataContext = this;
             InitializeComponent();
         }

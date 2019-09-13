@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CJGLXT.App.Configuration;
+using CJGLXT.ViewModels.Models;
 using CJGLXT.ViewModels.ViewModels;
 
 namespace CJGLXT.App.Views.Student
@@ -20,19 +21,33 @@ namespace CJGLXT.App.Views.Student
     /// <summary>
     /// Interaction logic for StudentView.xaml
     /// </summary>
-    public partial class StudentView : Page
+    public partial class StudentsView : Page
     {
-        public StudentView()
+        public StudentsView()
         {
+            ViewModel = ServiceLocator.Current().GetService<StudentListViewModel>();
+            StudentDetailsViewModel = ViewModel.StudentDetailsViewModel;
+            this.DataContext = this;
             InitializeComponent();
-            ViewModel = null;
+            StudentDetailsViewModel = null;
         }
 
-        public static StudentDetailsViewModel ViewModel { get; set; }
+        public StudentListViewModel ViewModel { get; }
+
+        public static StudentDetailsViewModel StudentDetailsViewModel { get; private set; }
 
         private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             await Details.ViewModel.LoadAsync(new StudentDetailsArgs());
+        }
+
+        private void Selector_OnSelected(object sender, RoutedEventArgs e)
+        {
+            if (this.list.SelectedItem is StudentModel model)
+            {
+                ViewModel.Args.StudentId = model.StudentId;
+                ViewModel.OnSelected();
+            }
         }
     }
 }

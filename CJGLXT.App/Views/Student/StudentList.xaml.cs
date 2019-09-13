@@ -24,5 +24,10 @@ namespace CJGLXT.App.Views.Student
         {
             InitializeComponent();
         }
+
+        private void Selector_OnSelected(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace CJGLXT.App.Configuration
             serviceCollection.AddSingleton<IDialogService, DialogService>();
 
             serviceCollection.AddTransient<StudentDetailsViewModel>();
+            serviceCollection.AddTransient<StudentListViewModel>();
 
             _rootServiceProvider = serviceCollection.BuildServiceProvider();
         }

@@ -45,8 +45,8 @@ namespace CJGLXT.App
             var arg=new StudentDetailsArgs();
             arg.StudentId = "221701339";
             await vm.LoadAsync(arg);
-            StudentView.ViewModel = vm;
-            Frame.NavigationService.Navigate(new StudentView());
+            StudentsView.ViewModel = vm;
+            Frame.NavigationService.Navigate(new StudentsView());
         }
     }
 }

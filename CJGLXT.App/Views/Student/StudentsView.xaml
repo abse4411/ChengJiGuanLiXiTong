@@ -1,0 +1,60 @@
+﻿<Page x:Class="CJGLXT.App.Views.Student.StudentsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CJGLXT.App.Views.Student"
+      xmlns:view="clr-namespace:CJGLXT.App.Views.Student"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="StudentView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <view:StudentDetails 
+            Grid.Row="0" Grid.RowSpan="3"
+            Grid.Column="2"
+            x:Name="Details" ></view:StudentDetails>
+        <Border
+            Style="{StaticResource MyBorder}"
+            Grid.Row="0" 
+            Grid.RowSpan="2"
+            Grid.Column="0" 
+            Grid.ColumnSpan="2">
+            <ListView x:Name="list" 
+                      SelectionMode="Single" 
+                      Selected="Selector_OnSelected"
+                      ItemsSource="{Binding ViewModel.Items}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="学生Id" 
+                                        DisplayMemberBinding="{Binding StudentId}">
+                        </GridViewColumn>
+                        <GridViewColumn Header="姓名"
+                                        DisplayMemberBinding="{Binding Name}">
+                        </GridViewColumn>
+                        <GridViewColumn Header="性别"
+                                        DisplayMemberBinding="{Binding Sex}">
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+        <Border
+            Style="{StaticResource MyBorder}"
+            Grid.Row="2" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2">
+            <Button Background="Transparent" BorderThickness="0" Click="ButtonBase_OnClick">Change ViewModel</Button>
+        </Border>
+    </Grid>
+</Page>
