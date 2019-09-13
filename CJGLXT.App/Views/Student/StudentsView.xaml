@@ -24,32 +24,46 @@
             Grid.Row="0" Grid.RowSpan="3"
             Grid.Column="2"
             x:Name="Details" ></view:StudentDetails>
-        <Border
-            Style="{StaticResource MyBorder}"
+        <DockPanel
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
             Grid.Row="0" 
             Grid.RowSpan="2"
             Grid.Column="0" 
             Grid.ColumnSpan="2">
-            <ListView x:Name="list" 
-                      BorderThickness="0"
-                      SelectionMode="Single" 
-                      SelectionChanged="Selector_OnSelected"
-                      ItemsSource="{Binding ViewModel.Items}">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="学生Id" 
-                                        DisplayMemberBinding="{Binding StudentId}">
-                        </GridViewColumn>
-                        <GridViewColumn Header="姓名"
-                                        DisplayMemberBinding="{Binding Name}">
-                        </GridViewColumn>
-                        <GridViewColumn Header="性别"
-                                        DisplayMemberBinding="{Binding Sex}">
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </Border>
+            <Border Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
+                <Grid>
+                    <Label FontSize="24" HorizontalAlignment="Left">学生信息管理</Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Click="NewItem" Margin="4" Style="{StaticResource RoundButton}">新建</Button>
+                        <Button Command="{Binding ViewModel.RefreshCommand}" Margin="4" Style="{StaticResource RoundButton}">刷新列表</Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border
+                Style="{StaticResource MyBorder}">
+                <ListView x:Name="list" 
+                          DockPanel.Dock="Bottom"
+                          BorderThickness="0"
+                          SelectionMode="Single" 
+                          SelectionChanged="Selector_OnSelected"
+                          ItemsSource="{Binding ViewModel.Items}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="学生Id" 
+                                            DisplayMemberBinding="{Binding StudentId}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="姓名"
+                                            DisplayMemberBinding="{Binding Name}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="性别"
+                                            DisplayMemberBinding="{Binding Sex}">
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+        </DockPanel>
         <Border
             Style="{StaticResource MyBorder}"
             Grid.Row="2" 

@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using CJGLXT.Data.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace CJGLXT.Data.DataServices.Base
+{
+    partial class DataServiceBase
+    {
+        public async Task<CourseRecord> GetCourseRecordAsync(int cid, string sid)
+        {
+            return await _dataSource.CourseRecords.Where(x => x.StudentId.Equals(sid) && x.CourseId==cid)
+                .AsNoTracking().FirstOrDefaultAsync();
+        }
+        public async Task<IList<CourseRecord>> GetStudentCourseRecordsAsync(string sid)
+        {
+            return await _dataSource.CourseRecords.Where(x => x.StudentId.Equals(sid))
+                .AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IList<CourseRecord>> GetCourseRecordsAsync(int cid)
+        {
+            return await _dataSource.CourseRecords.Where(x => x.CourseId==cid)
+                .AsNoTracking().ToListAsync();
+        }
+
+        public async Task<IList<CourseRecord>> GetCourseRecordsAsync()
+        {
+            return await _dataSource.CourseRecords.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<int> AddCourseRecordAsync(CourseRecord record)
+        {
+            await _dataSource.CourseRecords.AddAsync(record);
+
+            return await _dataSource.SaveChangesAsync();
+        }
+
+        public async Task<int> UpdateCourseRecordAsync(CourseRecord record)
+        {
+            _dataSource.CourseRecords.Update(record);
+
+            return await _dataSource.SaveChangesAsync();
+        }
+
+        public async Task<int> DeleteCourseRecordAsync(CourseRecord record)
+        {
+            _dataSource.CourseRecords.Remove(record);
+
+            return await _dataSource.SaveChangesAsync();
+        }
+    }
+}

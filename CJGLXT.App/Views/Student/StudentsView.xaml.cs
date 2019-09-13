@@ -27,6 +27,7 @@ namespace CJGLXT.App.Views.Student
         {
             ViewModel = ServiceLocator.Current().GetService<StudentListViewModel>();
             StudentDetailsViewModel = ViewModel.StudentDetailsViewModel;
+
             this.DataContext = this;
             InitializeComponent();
             StudentDetailsViewModel = null;
@@ -50,8 +51,11 @@ namespace CJGLXT.App.Views.Student
             }
         }
 
-        private void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
+        private void NewItem(object sender, RoutedEventArgs e)
         {
+            this.list.SelectedItem = null;
+            ViewModel.Args.StudentId = null;
+            ViewModel.OnSelected();
         }
     }
 }

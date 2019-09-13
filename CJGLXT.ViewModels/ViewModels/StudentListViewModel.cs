@@ -15,6 +15,7 @@ namespace CJGLXT.ViewModels.ViewModels
             StudentService = studentService;
             StudentDetailsViewModel = new StudentDetailsViewModel(studentService,dialogService);
             Args=new StudentDetailsArgs();
+            Refresh();
         }
 
         public IStudentService StudentService { get; }
@@ -26,7 +27,12 @@ namespace CJGLXT.ViewModels.ViewModels
             throw new NotImplementedException();
         }
 
-        protected override async void OnRefresh()
+        protected override void OnRefresh()
+        {
+             Refresh();
+        }
+
+        public async void Refresh()
         {
             if (!await RefreshAsync())
             {
@@ -56,8 +62,6 @@ namespace CJGLXT.ViewModels.ViewModels
             }
             return true;
         }
-
-        
 
         protected override void OnDeleteSelection()
         {

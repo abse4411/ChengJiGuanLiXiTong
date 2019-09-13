@@ -22,11 +22,11 @@ namespace CJGLXT.Data.DataServices.Base
 
         public async Task<int> AddOrUpdateStudentAsync(Student student)
         {
-            _dataSource.Entry(student).State = string.IsNullOrWhiteSpace(student.StudentId) ? EntityState.Added : EntityState.Modified;
-            var result= await _dataSource.SaveChangesAsync();
-            //_dataSource.Entry(student);
-
-            return result;
+            if (string.IsNullOrWhiteSpace(student.StudentId))
+                await _dataSource.Students.AddAsync(student);
+            else
+                _dataSource.Students.Update(student);
+            return await _dataSource.SaveChangesAsync();
         }
 
         public async Task<int> DeleteStudentAsync(Student student)
