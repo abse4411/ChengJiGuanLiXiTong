@@ -31,8 +31,9 @@
             Grid.Column="0" 
             Grid.ColumnSpan="2">
             <ListView x:Name="list" 
+                      BorderThickness="0"
                       SelectionMode="Single" 
-                      Selected="Selector_OnSelected"
+                      SelectionChanged="Selector_OnSelected"
                       ItemsSource="{Binding ViewModel.Items}">
                 <ListView.View>
                     <GridView>
@@ -54,7 +55,10 @@
             Grid.Row="2" 
             Grid.Column="0" 
             Grid.ColumnSpan="2">
-            <Button Background="Transparent" BorderThickness="0" Click="ButtonBase_OnClick">Change ViewModel</Button>
+            <StackPanel>
+                <Button Background="Transparent" BorderThickness="0" Click="ButtonBase_OnClick">Change ViewModel</Button>
+                <Button Command="{Binding ViewModel.RefreshCommand}">Load</Button>
+            </StackPanel>
         </Border>
     </Grid>
 </Page>

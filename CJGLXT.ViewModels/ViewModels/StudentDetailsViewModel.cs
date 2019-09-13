@@ -48,8 +48,10 @@ namespace CJGLXT.ViewModels.ViewModels
                 {
                     var item = await StudentService.GetStudentAsync(ViewModelArgs.StudentId);
                     Item = item ?? new StudentModel { StudentId = ViewModelArgs.StudentId, IsEmpty = true };
-                    if(item==null)
+                    if (item == null)
                         IsEditMode = true;
+                    else
+                        IsEditMode = false;
                 }
                 catch (Exception ex)
                 {

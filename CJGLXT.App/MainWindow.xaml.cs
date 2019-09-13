@@ -39,13 +39,13 @@ namespace CJGLXT.App
 
         }
 
-        private async void ButtonBase_OnClick1(object sender, RoutedEventArgs e)
+        private void ButtonBase_OnClick1(object sender, RoutedEventArgs e)
         {
-            var vm = ServiceLocator.Current().GetService<StudentDetailsViewModel>();
-            var arg=new StudentDetailsArgs();
-            arg.StudentId = "221701339";
-            await vm.LoadAsync(arg);
-            StudentsView.ViewModel = vm;
+            //var vm = ServiceLocator.Current().GetService<StudentDetailsViewModel>();
+            //var arg=new StudentDetailsArgs();
+            //arg.StudentId = "221701339";
+            //await vm.LoadAsync(arg);
+            //StudentsView.ViewModel = vm;
             Frame.NavigationService.Navigate(new StudentsView());
         }
     }

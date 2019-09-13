@@ -49,5 +49,9 @@ namespace CJGLXT.App.Views.Student
                 ViewModel.OnSelected();
             }
         }
+
+        private void ButtonBase_OnClick2(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
