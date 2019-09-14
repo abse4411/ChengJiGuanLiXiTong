@@ -13,23 +13,30 @@ namespace CJGLXT.Data.DataServices.Base
         public async Task<CourseRecord> GetCourseRecordAsync(int cid, string sid)
         {
             return await _dataSource.CourseRecords.Where(x => x.StudentId.Equals(sid) && x.CourseId == cid)
+                .Include(x=>x.Student)
+                .Include(x=>x.Course)
                 .AsNoTracking().FirstOrDefaultAsync();
         }
         public async Task<IList<CourseRecord>> GetStudentCourseRecordsAsync(string sid)
         {
             return await _dataSource.CourseRecords.Where(x => x.StudentId.Equals(sid))
+                .Include(x => x.Course)
                 .AsNoTracking().ToListAsync();
         }
 
         public async Task<IList<CourseRecord>> GetCourseRecordsAsync(int cid)
         {
             return await _dataSource.CourseRecords.Where(x => x.CourseId == cid)
+                .Include(x => x.Student)
                 .AsNoTracking().ToListAsync();
         }
 
         public async Task<IList<CourseRecord>> GetCourseRecordsAsync()
         {
-            return await _dataSource.CourseRecords.AsNoTracking().ToListAsync();
+            return await _dataSource.CourseRecords
+                .Include(x => x.Student)
+                .Include(x => x.Course)
+                .AsNoTracking().ToListAsync();
         }
 
         public async Task<int> AddOrUpdateCourseRecordAsync(CourseRecord record)

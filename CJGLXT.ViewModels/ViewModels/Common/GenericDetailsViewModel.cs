@@ -181,7 +181,6 @@ namespace CJGLXT.ViewModels.ViewModels.Common
                 }
                 else
                 {
-                    await DialogService.ShowAsync("删除失败", string.Empty);
                     IsEnabled = true;
                 }
             }

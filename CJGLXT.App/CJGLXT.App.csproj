@@ -141,9 +141,11 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\Int32Converter.cs" />
+    <Compile Include="Services\CourseRecordService.cs" />
     <Compile Include="Services\DataServiceFactory\DataServiceFactory.cs" />
     <Compile Include="Services\DataServiceFactory\IDataServiceFactory.cs" />
     <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\DataServiceBase.cs" />
     <Compile Include="Services\StudentEvaluationService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="UserInfo.cs" />

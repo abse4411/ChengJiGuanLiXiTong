@@ -10,19 +10,16 @@ using CJGLXT.ViewModels.Services;
 
 namespace CJGLXT.App.Services
 {
-    class StudentEvaluationService:IStudentEvaluationService
+    class StudentEvaluationService: DataServiceBase,IStudentEvaluationService
     {
-        private readonly IDataServiceFactory _dataServiceFactory;
-
-        public StudentEvaluationService(IDataServiceFactory dataServiceFactory)
+        public StudentEvaluationService(IDataServiceFactory dataServiceFactory) : base(dataServiceFactory)
         {
-            _dataServiceFactory = dataServiceFactory;
         }
 
         public async Task<StudentEvaluationModel> GetStudentEvaluationAsync(string tid, string sid)
         {
             StudentEvaluation evaluation;
-            using (var dataService=_dataServiceFactory.CreateDataService())
+            using (var dataService=DataServiceFactory.CreateDataService())
             {
                 evaluation =await dataService.GetStudentEvaluationAsync(tid, sid);
             }
@@ -44,7 +41,7 @@ namespace CJGLXT.App.Services
 
         public async Task<int> AddOrUpdateStudentEvaluationAsync(StudentEvaluationModel model)
         {
-            using (var dataService = _dataServiceFactory.CreateDataService())
+            using (var dataService = DataServiceFactory.CreateDataService())
             {
                 StudentEvaluation evaluation=new StudentEvaluation();
                 UpdateStudentFromModel(evaluation,model);
@@ -66,7 +63,7 @@ namespace CJGLXT.App.Services
         public async Task<int> DeleteStudentEvaluationAsync(StudentEvaluationModel model)
         {
             var evaluation = new StudentEvaluation { StudentId = model.StudentId,TeacherId = model.TeacherId};
-            using (var dataService = _dataServiceFactory.CreateDataService())
+            using (var dataService = DataServiceFactory.CreateDataService())
             {
                 return await dataService.DeleteStudentEvaluationAsync(evaluation);
             }

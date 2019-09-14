@@ -10,18 +10,15 @@ using CJGLXT.ViewModels.Services;
 
 namespace CJGLXT.App.Services
 {
-    class StudentService : IStudentService
+    class StudentService : DataServiceBase,IStudentService
     {
-        private readonly IDataServiceFactory _dataServiceFactory;
-
-        public StudentService(IDataServiceFactory dataServiceFactory)
+        public StudentService(IDataServiceFactory dataServiceFactory) : base(dataServiceFactory)
         {
-            _dataServiceFactory = dataServiceFactory;
         }
         public async Task<StudentModel> GetStudentAsync(string id)
         {
             Student student;
-            using (var dataService = _dataServiceFactory.CreateDataService())
+            using (var dataService = DataServiceFactory.CreateDataService())
             {
                 student = await dataService.GetStudentAsync(id);
             }
@@ -45,7 +42,7 @@ namespace CJGLXT.App.Services
         public async Task<IList<StudentModel>> GetStudentsAsync()
         {
             IList<StudentModel> result = new List<StudentModel>();
-            using (var dataService = _dataServiceFactory.CreateDataService())
+            using (var dataService = DataServiceFactory.CreateDataService())
             {
                 var students = await dataService.GetStudentsAsync();
                 foreach (var student in students)
@@ -59,7 +56,7 @@ namespace CJGLXT.App.Services
         public async Task<int> AddOrUpdateStudentAsync(StudentModel model)
         {
             string id = model.StudentId;
-            using (var dataService = _dataServiceFactory.CreateDataService())
+            using (var dataService = DataServiceFactory.CreateDataService())
             {
                 var student = !string.IsNullOrWhiteSpace(id) ? await dataService.GetStudentAsync(id) : new Student();
                 if (student != null)
@@ -84,7 +81,7 @@ namespace CJGLXT.App.Services
         public async Task<int> DeleteStudentAsync(StudentModel model)
         {
             var student = new Student { StudentId = model.StudentId };
-            using (var dataService = _dataServiceFactory.CreateDataService())
+            using (var dataService = DataServiceFactory.CreateDataService())
             {
                 return await dataService.DeleteStudentAsync(student);
             }

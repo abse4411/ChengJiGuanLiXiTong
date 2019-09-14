@@ -90,7 +90,7 @@ namespace CJGLXT.ViewModels.ViewModels
 
         protected override async Task<bool> ConfirmDeleteAsync()
         {
-            return await DialogService.ShowAsync("确认删除", $"你确定要删除该{Item.Name}的信息吗？");
+            return await DialogService.ShowAsync("警告", $"你确定要删除该{Item.Name}的信息吗？该学生的所有信息包括成绩，评价都将一并删除！");
         }
 
         protected override IEnumerable<IValidationConstraint<StudentModel>> GetValidationConstraints(StudentModel model)
