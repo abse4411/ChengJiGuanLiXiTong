@@ -30,6 +30,7 @@ namespace CJGLXT.App.Configuration
             serviceCollection.AddTransient<StudentEvaluationViewModel>();
             serviceCollection.AddTransient<StudentListViewModel>();
             serviceCollection.AddTransient<CourseRecordViewModel>();
+            serviceCollection.AddTransient<CourseRecordListViewModel>();
 
             _rootServiceProvider = serviceCollection.BuildServiceProvider();
         }

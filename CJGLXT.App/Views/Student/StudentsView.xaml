@@ -40,12 +40,10 @@
                     </StackPanel>
                 </Grid>
             </Border>
-            <Border
+            <Border DockPanel.Dock="Bottom"
                 Style="{StaticResource MyBorder}">
                 <ListView x:Name="list" 
-                          DockPanel.Dock="Bottom"
-                          BorderThickness="0"
-                          Background="Transparent"
+                          GridViewColumnHeader.Click="List_OnClick"
                           SelectionMode="Single" 
                           SelectionChanged="Selector_OnSelected"
                           SelectedItem="{Binding ViewModel.SelectedItem}"

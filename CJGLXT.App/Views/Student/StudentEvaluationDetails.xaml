@@ -14,11 +14,12 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DockPanel  Grid.Column="0">
-                    <Label DockPanel.Dock="Left" 
+                    <Label DockPanel.Dock="Left" Style="{StaticResource MyLabel}"
                            Content="{Binding ViewModel.Title,Mode=OneWay}"></Label>
                     <TextBox DockPanel.Dock="Right"
                              BorderThickness="0"
                              Margin="5"
+                             FontSize="16"
                              TextAlignment="Center"
                              IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"
                              Visibility="{Binding ViewModel.IsDataAvailable,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"

@@ -14,23 +14,23 @@
             <Border VerticalAlignment="Stretch" Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
                 <Grid  >
                     <StackPanel  >
-                        <Label >学生ID</Label>
-                        <TextBox  Text="{Binding ViewModel.EditableItem.StudentId,Mode=OneWay}"
+                        <Label Style="{StaticResource MyLabel}">学生ID</Label>
+                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.StudentId,Mode=OneWay}"
                          IsEnabled="False" ></TextBox>
-                        <Label >姓名</Label>
-                        <TextBox  Text="{Binding ViewModel.EditableItem.Name,Mode=TwoWay}"
+                        <Label Style="{StaticResource MyLabel}">姓名</Label>
+                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Name,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
-                        <Label >年龄</Label>
-                        <TextBox  Text="{Binding ViewModel.EditableItem.Age,Mode=TwoWay,Converter={StaticResource Int32Converter}}"
+                        <Label Style="{StaticResource MyLabel}">年龄</Label>
+                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Age,Mode=TwoWay,Converter={StaticResource Int32Converter}}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
-                        <Label >性别</Label>
-                        <TextBox  Text="{Binding ViewModel.EditableItem.Sex,Mode=TwoWay}"
+                        <Label Style="{StaticResource MyLabel}">性别</Label>
+                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Sex,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
-                        <Label >密码</Label>
-                        <TextBox Text="{Binding ViewModel.EditableItem.Password,Mode=TwoWay}"
+                        <Label Style="{StaticResource MyLabel}">密码</Label>
+                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Password,Mode=TwoWay}"
                                  IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                                  IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
                     </StackPanel>

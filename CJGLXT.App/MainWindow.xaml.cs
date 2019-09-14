@@ -56,7 +56,7 @@ namespace CJGLXT.App
             //arg.StudentId = "221701339";
             //await vm.LoadAsync(arg);
             //StudentsView.ViewModel = vm;
-            Frame.NavigationService.Navigate(new StudentsView());
+            Frame.NavigationService.Navigate(new CourseRecordView());
         }
 
         //private void LoadText(object sender, RoutedEventArgs e)
