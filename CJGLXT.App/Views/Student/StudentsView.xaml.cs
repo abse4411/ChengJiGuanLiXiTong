@@ -39,20 +39,10 @@ namespace CJGLXT.App.Views.Student
         public static StudentDetailsViewModel StudentDetailsViewModel { get; private set; }
         public static StudentEvaluationViewModel StudentEvaluationViewModel { get; private set; }
 
-        private async void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-            await Details.ViewModel.LoadAsync(new StudentDetailsArgs());
-        }
-
         private void Selector_OnSelected(object sender, RoutedEventArgs e)
         {
-            if (this.list.SelectedItem is StudentModel model)
-            {
-                ViewModel.SArgs.StudentId = model.StudentId;
-                ViewModel.EArgs.StudentId = model.StudentId;
                 ViewModel.EArgs.TeacherId = MainWindow.User.UserId;
                 ViewModel.OnSelected();
-            }
         }
 
     }

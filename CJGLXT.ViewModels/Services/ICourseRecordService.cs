@@ -9,6 +9,7 @@ namespace CJGLXT.ViewModels.Services
     public interface ICourseRecordService
     {
         Task<CourseRecordModel> GetCourseRecordAsync(string sid, int cid);
+        Task<IList<CourseRecordModel>> GetCourseRecordsAsync();
         Task<int> AddOrUpdateCourseRecordAsync(CourseRecordModel model);
         Task<int> DeleteCourseRecordAsync(CourseRecordModel model);
     }

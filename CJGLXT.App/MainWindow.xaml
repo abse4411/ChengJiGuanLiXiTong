@@ -9,15 +9,15 @@
     <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
         <DockPanel>
             <StackPanel DockPanel.Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <TextBox Text="{Binding Test.Oj2.Oj3.Text,Mode=TwoWay}"></TextBox>
+                <!--<TextBox Text="{Binding Test.Oj2.Oj3.Text,Mode=TwoWay}"></TextBox>
                 <TextBlock x:Name="Result">AAAA</TextBlock>
                 <Button  Click="ChangeRef">Change Reference</Button>
                 <Button Click="LoadText">Load</Button>
                 <TextBlock x:Name="textblock" Text="Test" HorizontalAlignment="Stretch"></TextBlock>
-                <Button Content="Test" Click="ButtonBase_OnClick"></Button>
+                <Button Content="Test" Click="ButtonBase_OnClick"></Button>-->
                 <Button Click="ButtonBase_OnClick1">Navgate</Button>
             </StackPanel>
-            <Frame x:Name="frame" DockPanel.Dock="Bottom" Background="GreenYellow" VerticalAlignment="Stretch"  NavigationUIVisibility="Visible"></Frame>
+            <Frame x:Name="frame" DockPanel.Dock="Bottom"  VerticalAlignment="Stretch"  NavigationUIVisibility="Visible"></Frame>
         </DockPanel>
     </Grid>
 </Window>

@@ -14,14 +14,15 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DockPanel  Grid.Column="0">
-                    <Label DockPanel.Dock="Left" Style="{StaticResource MyLabel}"
+                    <Label DockPanel.Dock="Left" 
                            Content="{Binding ViewModel.Title,Mode=OneWay}"></Label>
                     <TextBox DockPanel.Dock="Right"
                              BorderThickness="0"
                              Margin="5"
+                             TextAlignment="Center"
                              IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"
                              Visibility="{Binding ViewModel.IsDataAvailable,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
-                             VerticalAlignment="Stretch" 
+                             VerticalAlignment="Center" 
                              HorizontalAlignment="Stretch" 
                              Text="{Binding ViewModel.EditableItem.Content,Mode=TwoWay}">
                     </TextBox>
@@ -30,19 +31,19 @@
                                 Orientation="Horizontal"
                                 VerticalAlignment="Bottom"
                                 HorizontalAlignment="Right">
-                        <Button Margin="4" Style="{StaticResource RoundButton}" Command="{Binding ViewModel.SaveCommand}" 
+                        <Button Margin="4"  Command="{Binding ViewModel.SaveCommand}" 
                                 IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                                 Visibility="{Binding ViewModel.IsEditMode,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                         >保存</Button>
-                    <Button Margin="4" Style="{StaticResource RoundButton}" Command="{Binding ViewModel.EditCommand}"
+                    <Button Margin="4"  Command="{Binding ViewModel.EditCommand}"
                                 IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                                 Visibility="{Binding ViewModel.IsReadOnly,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                         >编辑</Button>
-                        <Button Margin="4" Style="{StaticResource RoundButton}" Command="{Binding ViewModel.CancelCommand}"
+                        <Button Margin="4"  Command="{Binding ViewModel.CancelCommand}"
                                 IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                                 Visibility="{Binding ViewModel.IsEditMode,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                         >取消</Button>
-                        <Button Margin="4" Style="{StaticResource RoundButton}"  Command="{Binding ViewModel.DeleteCommand}"
+                        <Button Margin="4"  Command="{Binding ViewModel.DeleteCommand}"
                                 IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                                 Visibility="{Binding ViewModel.IsReadOnly,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                         >删除</Button>

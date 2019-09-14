@@ -24,30 +24,19 @@ namespace CJGLXT.App.Views.Score
     {
         public CourseRecordView()
         {
-            CourseRecordViewModel = ServiceLocator.Current().GetService<CourseRecordViewModel>();
-            NewItem(null, null);
-            //CourseRecordViewModel = ViewModel.CourseRecordViewModel;
+            ViewModel = ServiceLocator.Current().GetService<CourseRecordListViewModel>();
+            CourseRecordViewModel = ViewModel.CourseRecordViewModel;
             this.DataContext = this;
             InitializeComponent();
-            //CourseRecordViewModel = null;
+            CourseRecordViewModel = null;
         }
 
+        public CourseRecordListViewModel ViewModel { get; }
         public static CourseRecordViewModel CourseRecordViewModel { get; private set; }
 
-        public CourseRecordArgs Args { get; set; } = new CourseRecordArgs();
-
-        private async void NewItem(object sender, RoutedEventArgs e)
+        private void Selector_OnSelected(object sender, SelectionChangedEventArgs e)
         {
-            Args.CourseId = -1;
-            Args.StudentId = null;
-            await CourseRecordViewModel.LoadAsync(Args);
-        }
-
-        private async void Load(object sender, RoutedEventArgs e)
-        {
-            Args.CourseId = 1;
-            Args.StudentId = "221701339";
-            await CourseRecordViewModel.LoadAsync(Args);
+            ViewModel.OnSelected();
         }
     }
 }

@@ -8,11 +8,68 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CourseRecordView">
 
-    <Grid>
-        <StackPanel>
-            <Button Click="NewItem">New</Button>
-            <Button Click="Load">Load</Button>
-            <local:CourseRecordDetails></local:CourseRecordDetails>
-        </StackPanel>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <local:CourseRecordDetails 
+            Grid.Row="0" Grid.RowSpan="3"
+            Grid.Column="2"
+            x:Name="Details" ></local:CourseRecordDetails>
+        <DockPanel
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            Grid.Row="0" 
+            Grid.RowSpan="3"
+            Grid.Column="0" 
+            Grid.ColumnSpan="2">
+            <Border Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
+                <Grid>
+                    <Label FontSize="24" HorizontalAlignment="Left">学生成绩管理</Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Command="{Binding ViewModel.NewCommand}" Margin="4" >新建</Button>
+                        <Button Command="{Binding ViewModel.RefreshCommand}" Margin="4" >刷新列表</Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border
+                Style="{StaticResource MyBorder}">
+                <ListView x:Name="list" 
+                          DockPanel.Dock="Bottom"
+                          BorderThickness="0"
+                          Background="Transparent"
+                          SelectionMode="Single" 
+                          SelectionChanged="Selector_OnSelected"
+                          SelectedItem="{Binding ViewModel.SelectedItem}"
+                          ItemsSource="{Binding ViewModel.Items}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="学生ID" 
+                                            DisplayMemberBinding="{Binding StudentId}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="姓名"
+                                            DisplayMemberBinding="{Binding Student.Name}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="课程ID"
+                                            DisplayMemberBinding="{Binding CourseId}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="课程名"
+                                            DisplayMemberBinding="{Binding Course.Name}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="成绩"
+                                            DisplayMemberBinding="{Binding Score}">
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+        </DockPanel>
     </Grid>
 </Page>

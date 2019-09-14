@@ -69,5 +69,19 @@ namespace CJGLXT.App.Services
                 return await dataService.DeleteCourseRecordAsync(record);
             }
         }
+
+        public async Task<IList<CourseRecordModel>> GetCourseRecordsAsync()
+        {
+            IList<CourseRecordModel> result = new List<CourseRecordModel>();
+            using (var dataService = DataServiceFactory.CreateDataService())
+            {
+                var records = await dataService.GetCourseRecordsAsync();
+                foreach (var record in records)
+                {
+                    result.Add(CreateCourseRecordModel(record));
+                }
+            }
+            return result;
+        }
     }
 }

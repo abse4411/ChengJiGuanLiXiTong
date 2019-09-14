@@ -17,12 +17,11 @@ namespace CJGLXT.ViewModels.ViewModels
             StudentEvaluationViewModel = new StudentEvaluationViewModel(studentEvaluationService, dialogService);
             SArgs = new StudentDetailsArgs();
             EArgs = new StudentEvaluationArgs();
-            Refresh();
         }
 
         public IStudentService StudentService { get; }
-        public StudentDetailsViewModel StudentDetailsViewModel { get; set; }
-        public StudentEvaluationViewModel StudentEvaluationViewModel { get; set; }
+        public StudentDetailsViewModel StudentDetailsViewModel { get; }
+        public StudentEvaluationViewModel StudentEvaluationViewModel { get; }
         public StudentDetailsArgs SArgs { get; set; }
         public StudentEvaluationArgs EArgs { get; set; }
 
@@ -50,8 +49,13 @@ namespace CJGLXT.ViewModels.ViewModels
 
         public async void OnSelected()
         {
-            await StudentDetailsViewModel.LoadAsync(SArgs);
-            await StudentEvaluationViewModel.LoadAsync(EArgs);
+            if (SelectedItem != null)
+            {
+                SArgs.StudentId = SelectedItem.StudentId;
+                EArgs.StudentId = SelectedItem.StudentId;
+                await StudentDetailsViewModel.LoadAsync(SArgs);
+                await StudentEvaluationViewModel.LoadAsync(EArgs);
+            }
         }
 
         private async Task<bool> RefreshAsync()

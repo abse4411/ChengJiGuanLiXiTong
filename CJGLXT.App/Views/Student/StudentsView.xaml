@@ -35,8 +35,8 @@
                 <Grid>
                     <Label FontSize="24" HorizontalAlignment="Left">学生信息管理</Label>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Button Command="{Binding ViewModel.NewCommand}" Margin="4" Style="{StaticResource RoundButton}">新建</Button>
-                        <Button Command="{Binding ViewModel.RefreshCommand}" Margin="4" Style="{StaticResource RoundButton}">刷新列表</Button>
+                        <Button Command="{Binding ViewModel.NewCommand}" Margin="4" >新建</Button>
+                        <Button Command="{Binding ViewModel.RefreshCommand}" Margin="4" >刷新列表</Button>
                     </StackPanel>
                 </Grid>
             </Border>
@@ -48,6 +48,7 @@
                           Background="Transparent"
                           SelectionMode="Single" 
                           SelectionChanged="Selector_OnSelected"
+                          SelectedItem="{Binding ViewModel.SelectedItem}"
                           ItemsSource="{Binding ViewModel.Items}">
                     <ListView.View>
                         <GridView>
