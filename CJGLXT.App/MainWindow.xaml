@@ -4,20 +4,85 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CJGLXT.App"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="800">
-    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-        <DockPanel>
-            <StackPanel DockPanel.Dock="Top"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <!--<TextBox Text="{Binding Test.Oj2.Oj3.Text,Mode=TwoWay}"></TextBox>
-                <TextBlock x:Name="Result">AAAA</TextBlock>
-                <Button  Click="ChangeRef">Change Reference</Button>
-                <Button Click="LoadText">Load</Button>
-                <TextBlock x:Name="textblock" Text="Test" HorizontalAlignment="Stretch"></TextBlock>
-                <Button Content="Test" Click="ButtonBase_OnClick"></Button>-->
-                <Button Click="ButtonBase_OnClick1">Navgate</Button>
-            </StackPanel>
-            <Frame x:Name="frame" DockPanel.Dock="Bottom"  VerticalAlignment="Stretch"  NavigationUIVisibility="Visible"></Frame>
-        </DockPanel>
+        Title="MainWindow" Height="800" Width="800">
+    <Grid>
+        <Frame x:Name="frame" 
+               Visibility="Collapsed"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"  
+               NavigationUIVisibility="Visible"></Frame>
+        <Grid Margin="50"
+              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <md:Card VerticalAlignment="Stretch" 
+                    Grid.Row="0" Foreground="Black" Background="SkyBlue"
+                     Grid.Column="0" Grid.ColumnSpan="7">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <md:PackIcon Kind="Teacher" 
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                                 Height="100" Width="100"></md:PackIcon>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           FontSize="32">
+                        你好，世界
+                    </Label>
+                </StackPanel>
+            </md:Card>
+            <md:Card VerticalAlignment="Stretch" 
+                     Grid.Row="2" Grid.RowSpan="3" Foreground="Black" Background="SkyBlue"
+                     Grid.Column="0" Grid.ColumnSpan="3">
+                <StackPanel VerticalAlignment="Center">
+                    <md:PackIcon Kind="AccountCardDetails" 
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                                 Height="100" Width="100"></md:PackIcon>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           FontSize="32">
+                        学生信息管理
+                    </Label>
+                </StackPanel>
+            </md:Card>
+            <md:Card VerticalAlignment="Stretch" 
+                     Grid.Row="2"  Foreground="Black" Background="SkyBlue"
+                     Grid.Column="4" Grid.ColumnSpan="3">
+                <StackPanel VerticalAlignment="Center">
+                    <md:PackIcon Kind="Score" 
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                                 Height="100" Width="100"></md:PackIcon>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           FontSize="32">
+                        学生成绩管理
+                    </Label>
+                </StackPanel>
+            </md:Card>
+            <md:Card VerticalAlignment="Stretch" 
+                     Grid.Row="4"  Foreground="Black" Background="SkyBlue"
+                     Grid.Column="4" Grid.ColumnSpan="3">
+                <StackPanel VerticalAlignment="Center">
+                    <md:PackIcon Kind="ChartAreaspline" 
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                                 Height="100" Width="100"></md:PackIcon>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           FontSize="32">
+                        学生成绩统计
+                    </Label>
+                </StackPanel>
+            </md:Card>
+        </Grid>
     </Grid>
 </Window>
