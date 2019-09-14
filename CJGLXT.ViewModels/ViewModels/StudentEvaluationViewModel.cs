@@ -25,7 +25,7 @@ namespace CJGLXT.ViewModels.ViewModels
             StudentEvaluationService = studentEvaluationService;
         }
         public override string Title => IsDataUnavailable ? "选中学生来进行评价" : TitleEdit;
-        public string TitleEdit => Item == null ? "编辑评价" : $"评价";
+        public string TitleEdit => Item == null ? "编辑评价" : "评价";
 
         public override bool ItemIsNew => Item?.IsNew ?? true;
 
