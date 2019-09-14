@@ -16,7 +16,7 @@ namespace CJGLXT.ViewModels.Models
 
         public int? Score { get; set; }
 
-        public bool IsNew { get; set; } = true;
+        public bool IsNew => String.IsNullOrWhiteSpace(StudentId) || CourseId <= 0;
 
         public static CourseRecordModel CreateEmpty() => new CourseRecordModel { CourseId = -1, StudentId=null, IsEmpty = true };
 
@@ -37,7 +37,6 @@ namespace CJGLXT.ViewModels.Models
                 Student = source.Student;
                 StudentId = source.StudentId;
                 Score = source.Score;
-                IsNew = source.IsNew;
             }
         }
     }

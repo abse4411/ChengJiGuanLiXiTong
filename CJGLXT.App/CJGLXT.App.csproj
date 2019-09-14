@@ -141,6 +141,7 @@
     </ApplicationDefinition>
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\Int32Converter.cs" />
+    <Compile Include="Converters\NullableInt32Converter.cs" />
     <Compile Include="Services\CourseRecordService.cs" />
     <Compile Include="Services\DataServiceFactory\DataServiceFactory.cs" />
     <Compile Include="Services\DataServiceFactory\IDataServiceFactory.cs" />
@@ -149,6 +150,12 @@
     <Compile Include="Services\StudentEvaluationService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="UserInfo.cs" />
+    <Compile Include="Views\Score\CourseRecordDetails.xaml.cs">
+      <DependentUpon>CourseRecordDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Score\CourseRecordView.xaml.cs">
+      <DependentUpon>CourseRecordView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Student\StudentDetails.xaml.cs">
       <DependentUpon>StudentDetails.xaml</DependentUpon>
     </Compile>
@@ -176,6 +183,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\Score\CourseRecordDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Score\CourseRecordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Student\StudentDetails.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -222,9 +237,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Score\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CJGLXT.Data\CJGLXT.Data.csproj">
       <Project>{fca05849-08b6-4ad5-8b2b-2bd6788d3735}</Project>

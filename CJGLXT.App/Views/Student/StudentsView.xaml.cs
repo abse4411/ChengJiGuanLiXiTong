@@ -31,6 +31,7 @@ namespace CJGLXT.App.Views.Student
             this.DataContext = this;
             InitializeComponent();
             StudentDetailsViewModel = null;
+            StudentEvaluationViewModel = null;
         }
 
         public StudentListViewModel ViewModel { get; }

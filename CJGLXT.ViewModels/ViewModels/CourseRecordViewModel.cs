@@ -98,7 +98,11 @@ namespace CJGLXT.ViewModels.ViewModels
         {
             yield return new RequiredConstraint<CourseRecordModel>("姓名", m => m.StudentId);
             yield return new RequiredConstraint<CourseRecordModel>("年龄", m => m.CourseId);
-            
+            yield return new NullableOrOtherConstraint<CourseRecordModel>("成绩",m=>m.Score,new IValidationConstraint<CourseRecordModel>[]
+            {
+                new NonGreaterThanConstraint<CourseRecordModel>("成绩",m=>m.Score,100,"100"),
+                new GreaterThanConstraint<CourseRecordModel>("成绩",m=>m.Score,-1), 
+            });
         }
     }
 }

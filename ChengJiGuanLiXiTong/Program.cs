@@ -16,19 +16,21 @@ namespace ChengJiGuanLiXiTong
         {
             try
             {
-                using (var db = new SqlServerDb())
-                {
+                int? x=null;
+                Console.WriteLine(x);
+                //using (var db = new SqlServerDb())
+                //{
 
-                    var record = db.CourseRecords.Find("221701340", 6);
-                    if (record != null)
-                    {
-                        Console.WriteLine(record.Score);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Not Found!");
-                    }
-                }
+                //    var record = db.CourseRecords.Find("221701340", 6);
+                //    if (record != null)
+                //    {
+                //        Console.WriteLine(record.Score);
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine("Not Found!");
+                //    }
+                //}
 
             }
             catch (Exception e)

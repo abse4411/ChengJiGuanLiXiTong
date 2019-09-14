@@ -23,11 +23,13 @@ namespace CJGLXT.App.Configuration
             serviceCollection.AddSingleton<IDataServiceFactory, DataServiceFactory>();
             serviceCollection.AddSingleton<IStudentService, StudentService>();
             serviceCollection.AddSingleton<IStudentEvaluationService, StudentEvaluationService>();
+            serviceCollection.AddScoped<ICourseRecordService, CourseRecordService>();
             serviceCollection.AddSingleton<IDialogService, DialogService>();
 
             serviceCollection.AddTransient<StudentDetailsViewModel>();
             serviceCollection.AddTransient<StudentEvaluationViewModel>();
             serviceCollection.AddTransient<StudentListViewModel>();
+            serviceCollection.AddTransient<CourseRecordViewModel>();
 
             _rootServiceProvider = serviceCollection.BuildServiceProvider();
         }

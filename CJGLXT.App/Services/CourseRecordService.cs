@@ -38,7 +38,6 @@ namespace CJGLXT.App.Services
                 Student = record.Student,
                 StudentId = record.StudentId,
                 Score = record.Score,
-                IsNew = false
             };
         }
 
@@ -50,7 +49,6 @@ namespace CJGLXT.App.Services
                 UpdateStudentFromModel(record, model);
                 var result = await dataService.AddOrUpdateCourseRecordAsync(record);
                 var newEvaluation = await GetCourseRecordAsync(record.StudentId, record.CourseId);
-                newEvaluation.IsNew = false;
                 model.Merge(newEvaluation);
                 return result;
             }

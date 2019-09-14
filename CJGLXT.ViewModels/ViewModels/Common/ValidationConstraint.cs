@@ -42,10 +42,46 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             {
                 return !String.IsNullOrWhiteSpace(value.ToString());
             }
-            return false;
+            return true;
         }
 
         string IValidationConstraint<T>.Message => $"Property '{PropertyName}' cannot be empty.";
+    }
+
+    public class NullableOrOtherConstraint<T> : IValidationConstraint<T>
+    {
+        public NullableOrOtherConstraint(string propertyName, Func<T, object> propertyValue,IEnumerable<IValidationConstraint<T>> other)
+        {
+            PropertyName = propertyName;
+            PropertyValue = propertyValue;
+            Other = other;
+        }
+
+        public string PropertyName { get; set; }
+        public Func<T, object> PropertyValue { get; set; }
+        public IEnumerable<IValidationConstraint<T>> Other { get; }
+
+        Func<T, bool> IValidationConstraint<T>.Validate => ValidateProperty;
+
+        private bool ValidateProperty(T model)
+        {
+            var value = PropertyValue(model);
+            if (!String.IsNullOrWhiteSpace(value.ToString()))
+            {
+                foreach (var v in Other)
+                {
+                    if (!v.Validate(model))
+                    {
+                        _otherMessage = v.Message;
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        private string _otherMessage;
+        string IValidationConstraint<T>.Message=> this._otherMessage;
     }
 
     public class RequiredGreaterThanZeroConstraint<T> : IValidationConstraint<T>
@@ -66,12 +102,12 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             var value = PropertyValue(model);
             if (value != null)
             {
-                if (Double.TryParse(value.ToString(), out double d))
+                if (Int32.TryParse(value.ToString(), out int d))
                 {
                     return d > 0;
                 }
             }
-            return true;
+            return false;
         }
 
         string IValidationConstraint<T>.Message => $"Property '{PropertyName}' must be greater than zero.";
@@ -95,12 +131,12 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             var value = PropertyValue(model);
             if (value != null)
             {
-                if (Double.TryParse(value.ToString(), out double d))
+                if (Int32.TryParse(value.ToString(), out int d))
                 {
                     return d >= 0;
                 }
             }
-            return true;
+            return false;
         }
 
         string IValidationConstraint<T>.Message => $"Property '{PropertyName}' must be positive.";
@@ -124,12 +160,12 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             var value = PropertyValue(model);
             if (value != null)
             {
-                if (Double.TryParse(value.ToString(), out double d))
+                if (Int32.TryParse(value.ToString(), out int d))
                 {
                     return d != 0;
                 }
             }
-            return true;
+            return false;
         }
 
         string IValidationConstraint<T>.Message => $"Property '{PropertyName}' cannot be zero.";
@@ -137,7 +173,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
     public class GreaterThanConstraint<T> : IValidationConstraint<T>
     {
-        public GreaterThanConstraint(string propertyName, Func<T, object> propertyValue, double value)
+        public GreaterThanConstraint(string propertyName, Func<T, object> propertyValue, int value)
         {
             PropertyName = propertyName;
             PropertyValue = propertyValue;
@@ -146,7 +182,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
         public string PropertyName { get; set; }
         public Func<T, object> PropertyValue { get; set; }
-        public double Value { get; set; }
+        public int Value { get; set; }
 
         Func<T, bool> IValidationConstraint<T>.Validate => ValidateProperty;
 
@@ -155,12 +191,12 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             var value = PropertyValue(model);
             if (value != null)
             {
-                if (Double.TryParse(value.ToString(), out double d))
+                if (Int32.TryParse(value.ToString(), out int d))
                 {
                     return d > Value;
                 }
             }
-            return true;
+            return false;
         }
 
         string IValidationConstraint<T>.Message => $"Property '{PropertyName}' must be greater than {Value}.";
@@ -168,7 +204,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
     public class NonGreaterThanConstraint<T> : IValidationConstraint<T>
     {
-        public NonGreaterThanConstraint(string propertyName, Func<T, object> propertyValue, double value, string valueDesc = null)
+        public NonGreaterThanConstraint(string propertyName, Func<T, object> propertyValue, int value, string valueDesc = null)
         {
             PropertyName = propertyName;
             PropertyValue = propertyValue;
@@ -178,7 +214,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
         public string PropertyName { get; set; }
         public Func<T, object> PropertyValue { get; set; }
-        public double Value { get; set; }
+        public int Value { get; set; }
         public string ValueDesc { get; set; }
 
         Func<T, bool> IValidationConstraint<T>.Validate => ValidateProperty;
@@ -188,12 +224,12 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             var value = PropertyValue(model);
             if (value != null)
             {
-                if (Double.TryParse(value.ToString(), out double d))
+                if (Int32.TryParse(value.ToString(), out int d))
                 {
                     return d <= Value;
                 }
             }
-            return true;
+            return false;
         }
 
         string IValidationConstraint<T>.Message => $"Property '{PropertyName}' cannot be greater than {ValueDesc}.";
@@ -201,7 +237,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
     public class LessThanConstraint<T> : IValidationConstraint<T>
     {
-        public LessThanConstraint(string propertyName, Func<T, object> propertyValue, double value)
+        public LessThanConstraint(string propertyName, Func<T, object> propertyValue, int value)
         {
             PropertyName = propertyName;
             PropertyValue = propertyValue;
@@ -210,7 +246,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
         public string PropertyName { get; set; }
         public Func<T, object> PropertyValue { get; set; }
-        public double Value { get; set; }
+        public int Value { get; set; }
 
         Func<T, bool> IValidationConstraint<T>.Validate => ValidateProperty;
 
@@ -219,12 +255,12 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             var value = PropertyValue(model);
             if (value != null)
             {
-                if (Double.TryParse(value.ToString(), out double d))
+                if (Int32.TryParse(value.ToString(), out int d))
                 {
                     return d < Value;
                 }
             }
-            return true;
+            return false;
         }
 
         string IValidationConstraint<T>.Message => $"Property '{PropertyName}' must be less than {Value}.";
