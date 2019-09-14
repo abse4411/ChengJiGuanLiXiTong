@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace CJGLXT.App.Converters
 {
-    class NullableInt32Converter: IValueConverter
+    class NullableInt32Converter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -31,20 +31,13 @@ namespace CJGLXT.App.Converters
         {
             if (value is string str)
             {
-                if (targetType == typeof(Int32))
-                {
+                if (!String.IsNullOrWhiteSpace(str))
                     if (Int32.TryParse(value.ToString(), out Int32 n32))
                     {
                         return n32;
                     }
-                }
-                return null;
             }
-            if (targetType == typeof(Int32))
-            {
-                return null;
-            }
-            return value;
+            return null;
         }
     }
 }

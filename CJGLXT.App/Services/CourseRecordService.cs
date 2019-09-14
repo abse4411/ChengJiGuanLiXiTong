@@ -56,9 +56,9 @@ namespace CJGLXT.App.Services
 
         private static void UpdateStudentFromModel(CourseRecord target, CourseRecordModel source)
         {
-            target.StudentId = target.StudentId;
-            target.CourseId = target.CourseId;
-            target.Score = target.Score;
+            target.StudentId = source.StudentId;
+            target.CourseId = source.CourseId;
+            target.Score = source.Score;
         }
 
         public async Task<int> DeleteCourseRecordAsync(CourseRecordModel model)

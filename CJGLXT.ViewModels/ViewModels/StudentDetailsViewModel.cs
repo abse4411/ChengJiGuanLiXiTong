@@ -53,9 +53,9 @@ namespace CJGLXT.ViewModels.ViewModels
                     else
                         IsEditMode = false;
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                    await DialogService.ShowAsync("载入失败", ex.Message);
+                    await DialogService.ShowAsync("载入失败", e.InnerException?.Message ?? e.Message);
                 }
             }
         }
@@ -68,7 +68,7 @@ namespace CJGLXT.ViewModels.ViewModels
             }
             catch (Exception e)
             {
-                await DialogService.ShowAsync("保存失败", e.Message);
+                await DialogService.ShowAsync("保存失败", e.InnerException?.Message ?? e.Message);
             }
 
             return false;

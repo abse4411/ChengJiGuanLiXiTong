@@ -12,8 +12,8 @@
                 <Label FontSize="24" Grid.Row="0" Content="{Binding ViewModel.Title,Mode=OneWay}"></Label>
             </Border>
             <Border VerticalAlignment="Stretch" Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
-                <Grid  >
-                    <StackPanel  >
+                <Grid >
+                    <StackPanel >
                         <Label Style="{StaticResource MyLabel}">学生ID</Label>
                         <TextBox Style="{StaticResource MyTextBox}" Text="{Binding ViewModel.EditableItem.StudentId,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
@@ -23,7 +23,7 @@
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
                         <Label Style="{StaticResource MyLabel}">成绩</Label>
-                        <TextBox Style="{DynamicResource MyTextBox}" Text="{Binding ViewModel.EditableItem.Score,Mode=TwoWay,Converter={StaticResource Int32Converter}}"
+                        <TextBox Style="{DynamicResource MyTextBox}" Text="{Binding ViewModel.EditableItem.Score,Mode=TwoWay,Converter={StaticResource NullableInt32Converter}}"
                                  IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                                  IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
                     </StackPanel>

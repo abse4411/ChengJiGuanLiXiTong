@@ -22,7 +22,9 @@ namespace CJGLXT.Data.DataServices.Base
         }
         public async Task<int> AddOrUpdateStudentEvaluationAsync(StudentEvaluation evaluation)
         {
-            if (_dataSource.StudentEvaluations.Find( evaluation.TeacherId, evaluation.StudentId) != null)
+            if (await _dataSource.StudentEvaluations.AsNoTracking()
+                    .Where(x => x.StudentId.Equals(evaluation.StudentId) && x.TeacherId.Equals(evaluation.TeacherId))
+                    .FirstOrDefaultAsync() != null)
                 _dataSource.StudentEvaluations.Update(evaluation);
             else
                 await _dataSource.StudentEvaluations.AddAsync(evaluation);
@@ -48,7 +50,9 @@ namespace CJGLXT.Data.DataServices.Base
         }
         public async Task<int> AddOrUpdateTeacherEvaluationAsync(TeacherEvaluation evaluation)
         {
-            if (_dataSource.TeacherEvaluations.Find(evaluation.TeacherId, evaluation.StudentId) != null)
+            if (await _dataSource.TeacherEvaluations.AsNoTracking()
+                    .Where(x => x.StudentId.Equals(evaluation.StudentId) && x.TeacherId.Equals(evaluation.TeacherId))
+                    .FirstOrDefaultAsync() != null)
                 _dataSource.TeacherEvaluations.Update(evaluation);
             else
                 await _dataSource.TeacherEvaluations.AddAsync(evaluation);

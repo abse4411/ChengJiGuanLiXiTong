@@ -40,6 +40,7 @@ namespace CJGLXT.ViewModels.ViewModels
                 if (String.IsNullOrWhiteSpace(args.StudentId) || String.IsNullOrWhiteSpace(args.TeacherId))
                 {
                     Item = null;
+                    IsEditMode = true;
                 }
                 else
                 {
@@ -65,7 +66,7 @@ namespace CJGLXT.ViewModels.ViewModels
             }
             catch (Exception e)
             {
-                await DialogService.ShowAsync("保存失败", e.Message);
+                await DialogService.ShowAsync("保存失败", e.InnerException?.Message??e.Message);
             }
 
             return false;
@@ -79,7 +80,7 @@ namespace CJGLXT.ViewModels.ViewModels
             }
             catch (Exception e)
             {
-                await DialogService.ShowAsync("删除失败", e.Message);
+                await DialogService.ShowAsync("删除失败", e.InnerException?.Message ?? e.Message);
             }
 
             return false;

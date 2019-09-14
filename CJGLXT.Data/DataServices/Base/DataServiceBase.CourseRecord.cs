@@ -41,7 +41,9 @@ namespace CJGLXT.Data.DataServices.Base
 
         public async Task<int> AddOrUpdateCourseRecordAsync(CourseRecord record)
         {
-            if (_dataSource.CourseRecords.Find(record.StudentId, record.CourseId) != null)
+            if (await _dataSource.CourseRecords.AsNoTracking()
+                    .Where(x => x.StudentId.Equals(record.StudentId) && x.CourseId== record.CourseId)
+                    .FirstOrDefaultAsync() != null)
                 _dataSource.CourseRecords.Update(record);
             else
                 await _dataSource.CourseRecords.AddAsync(record);

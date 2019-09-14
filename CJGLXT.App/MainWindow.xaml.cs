@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CJGLXT.App.Configuration;
+using CJGLXT.App.Views.Score;
 using CJGLXT.App.Views.Student;
 using CJGLXT.Data;
 using CJGLXT.ViewModels.ViewModels;
@@ -55,7 +56,7 @@ namespace CJGLXT.App
             //arg.StudentId = "221701339";
             //await vm.LoadAsync(arg);
             //StudentsView.ViewModel = vm;
-            Frame.NavigationService.Navigate(new StudentsView());
+            Frame.NavigationService.Navigate(new CourseRecordView());
         }
 
         private void LoadText(object sender, RoutedEventArgs e)

@@ -19,6 +19,7 @@
                     <TextBox DockPanel.Dock="Right"
                              BorderThickness="0"
                              Margin="5"
+                             IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"
                              Visibility="{Binding ViewModel.IsDataAvailable,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                              VerticalAlignment="Stretch" 
                              HorizontalAlignment="Stretch" 

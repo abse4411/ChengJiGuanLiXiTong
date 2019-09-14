@@ -42,7 +42,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             {
                 return !String.IsNullOrWhiteSpace(value.ToString());
             }
-            return true;
+            return false;
         }
 
         string IValidationConstraint<T>.Message => $"Property '{PropertyName}' cannot be empty.";
@@ -50,7 +50,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
     public class NullableOrOtherConstraint<T> : IValidationConstraint<T>
     {
-        public NullableOrOtherConstraint(string propertyName, Func<T, object> propertyValue,IEnumerable<IValidationConstraint<T>> other)
+        public NullableOrOtherConstraint(string propertyName, Func<T, object> propertyValue, IEnumerable<IValidationConstraint<T>> other)
         {
             PropertyName = propertyName;
             PropertyValue = propertyValue;
@@ -66,22 +66,23 @@ namespace CJGLXT.ViewModels.ViewModels.Common
         private bool ValidateProperty(T model)
         {
             var value = PropertyValue(model);
-            if (!String.IsNullOrWhiteSpace(value.ToString()))
-            {
-                foreach (var v in Other)
+            if (value != null)
+                if (!String.IsNullOrWhiteSpace(value.ToString()))
                 {
-                    if (!v.Validate(model))
+                    foreach (var v in Other)
                     {
-                        _otherMessage = v.Message;
-                        return false;
+                        if (!v.Validate(model))
+                        {
+                            _otherMessage = v.Message;
+                            return false;
+                        }
                     }
                 }
-            }
             return true;
         }
 
         private string _otherMessage;
-        string IValidationConstraint<T>.Message=> this._otherMessage;
+        string IValidationConstraint<T>.Message => this._otherMessage;
     }
 
     public class RequiredGreaterThanZeroConstraint<T> : IValidationConstraint<T>
@@ -299,7 +300,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
         {
             get
             {
-                StringBuilder str=new StringBuilder();
+                StringBuilder str = new StringBuilder();
                 str.Append($"Property '{PropertyName}' must be one of those value(s): ");
                 foreach (var v in Values)
                 {
