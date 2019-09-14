@@ -7,32 +7,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Border BorderThickness="2" 
-                BorderBrush="DimGray" 
-                CornerRadius="5"
-                VerticalAlignment="Stretch">
+        <Border Style="{StaticResource MyBorder}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DockPanel  Grid.Column="0">
-                    <Label DockPanel.Dock="Left"
-                            Content="{Binding ViewModel.Title,Mode=OneWay}"></Label>
+                    <Label DockPanel.Dock="Left" Style="{StaticResource MyLabel}"
+                           Content="{Binding ViewModel.Title,Mode=OneWay}"></Label>
                     <TextBox DockPanel.Dock="Right"
                              BorderThickness="0"
-                             Margin="0,5,0,5"
+                             Margin="5"
+                             Visibility="{Binding ViewModel.IsDataAvailable,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                              VerticalAlignment="Stretch" 
                              HorizontalAlignment="Stretch" 
                              Text="{Binding ViewModel.EditableItem.Content,Mode=TwoWay}">
                     </TextBox>
                 </DockPanel>
-                <Border VerticalAlignment="Bottom" 
-                        BorderThickness="2" 
-                        BorderBrush="DimGray" 
-                        CornerRadius="5"
-                        Grid.Column="1">
-                    <StackPanel 
+                <StackPanel Grid.Column="1"
                                 Orientation="Horizontal"
                                 VerticalAlignment="Bottom"
                                 HorizontalAlignment="Right">
@@ -40,7 +33,7 @@
                                 IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                                 Visibility="{Binding ViewModel.IsEditMode,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                         >保存</Button>
-                        <Button Margin="4" Style="{DynamicResource RoundButton}" Command="{Binding ViewModel.EditCommand}"
+                    <Button Margin="4" Style="{StaticResource RoundButton}" Command="{Binding ViewModel.EditCommand}"
                                 IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                                 Visibility="{Binding ViewModel.IsReadOnly,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                         >编辑</Button>
@@ -53,10 +46,7 @@
                                 Visibility="{Binding ViewModel.IsReadOnly,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                         >删除</Button>
                     </StackPanel>
-
-                </Border>
             </Grid>
-
         </Border>
     </Grid>
 </UserControl>

@@ -35,7 +35,7 @@
                 <Grid>
                     <Label FontSize="24" HorizontalAlignment="Left">学生信息管理</Label>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Button Click="NewItem" Margin="4" Style="{StaticResource RoundButton}">新建</Button>
+                        <Button Command="{Binding ViewModel.NewCommand}" Margin="4" Style="{StaticResource RoundButton}">新建</Button>
                         <Button Command="{Binding ViewModel.RefreshCommand}" Margin="4" Style="{StaticResource RoundButton}">刷新列表</Button>
                     </StackPanel>
                 </Grid>
@@ -59,6 +59,12 @@
                             </GridViewColumn>
                             <GridViewColumn Header="性别"
                                             DisplayMemberBinding="{Binding Sex}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="年龄"
+                                            DisplayMemberBinding="{Binding Age}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="密码"
+                                            DisplayMemberBinding="{Binding Password}">
                             </GridViewColumn>
                         </GridView>
                     </ListView.View>

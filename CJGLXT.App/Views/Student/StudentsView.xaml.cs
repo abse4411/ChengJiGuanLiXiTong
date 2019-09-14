@@ -54,11 +54,5 @@ namespace CJGLXT.App.Views.Student
             }
         }
 
-        private void NewItem(object sender, RoutedEventArgs e)
-        {
-            this.list.SelectedItem = null;
-            ViewModel.SArgs.StudentId = null;
-            ViewModel.OnSelected();
-        }
     }
 }

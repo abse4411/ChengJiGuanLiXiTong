@@ -26,9 +26,13 @@ namespace CJGLXT.ViewModels.ViewModels
         public StudentDetailsArgs SArgs { get; set; }
         public StudentEvaluationArgs EArgs { get; set; }
 
-        protected override void OnNew()
+
+        protected override async void OnNew()
         {
-            throw new NotImplementedException();
+            SArgs.StudentId = null;
+            EArgs.StudentId = null;
+            await StudentDetailsViewModel.LoadAsync(SArgs);
+            await StudentEvaluationViewModel.LoadAsync(EArgs);
         }
 
         protected override void OnRefresh()
@@ -53,14 +57,10 @@ namespace CJGLXT.ViewModels.ViewModels
         private async Task<bool> RefreshAsync()
         {
             Items = null;
-            SArgs.StudentId = null;
-            EArgs.StudentId = null;
-            await StudentDetailsViewModel.LoadAsync(SArgs);
-            await StudentEvaluationViewModel.LoadAsync(EArgs);
-
+            OnNew();
             try
             {
-                Items=await StudentService.GetStudentsAsync();
+                Items =await StudentService.GetStudentsAsync();
             }
             catch (Exception e)
             {
