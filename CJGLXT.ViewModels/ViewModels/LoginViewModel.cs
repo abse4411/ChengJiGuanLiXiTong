@@ -44,7 +44,7 @@ namespace CJGLXT.ViewModels.ViewModels
             set => Set(ref _isEnabled, value);
         }
 
-        private UserModel _user;
+        private UserModel _user=new UserModel();
         public UserModel User
         {
             get => _user;
