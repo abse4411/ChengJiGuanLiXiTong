@@ -35,6 +35,8 @@ namespace CJGLXT.App
         private async void LoginClicked(object sender, RoutedEventArgs e)
         {
             var userType= (this.Student.IsChecked ?? false) ? UserType.Student : UserType.Teacher;
+            ViewModel.User.UserType = userType;
+            ViewModel.User.Password = String.IsNullOrEmpty(this.Password.Password)?null: this.Password.Password;
             if (await ViewModel.Login())
             {
                 MainPage.User.UserType = userType;

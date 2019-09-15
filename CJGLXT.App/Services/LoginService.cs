@@ -26,7 +26,7 @@ namespace CJGLXT.App.Services
                 if (model.UserType == UserType.Student)
                 {
                     var student = await dataService.GetStudentAsync(model.UserId);
-                    if (student != null)
+                    if (student != null  && String.Equals(student.Password,model.Password))
                     {
                         UpdateUserModelFromStudent(model, student);
                         return true;
@@ -35,12 +35,11 @@ namespace CJGLXT.App.Services
                 else
                 {
                     var teacher = await dataService.GetTeacherAsync(model.UserId);
-                    if (teacher != null)
+                    if (teacher != null && String.Equals(teacher.Password, model.Password))
                     {
                         UpdateUserModelFromTeacher(model, teacher);
                         return true;
                     }
-                    return true;
                 }
             }
             return false;

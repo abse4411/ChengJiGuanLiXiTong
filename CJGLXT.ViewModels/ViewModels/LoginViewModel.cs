@@ -23,15 +23,26 @@ namespace CJGLXT.ViewModels.ViewModels
         {
             IsEnabled = false;
 
+            bool result = true;
             if (String.IsNullOrWhiteSpace(User.UserId))
             {
-                await DialogService.ShowAsync("验证未通过", "Property 'UserName' cannot be empty 请更正错误后重试！");
-                return false;
+                await DialogService.ShowAsync("验证未通过", "Property 'UserId' cannot be empty 请更正错误后重试！");
+                result = false;
             }
-            var result= await LoginService.LoginAsync(User);
-            if (!result)
-                await DialogService.ShowAsync("登录失败", "账号不存或者密码错误");
-
+            if (result)
+            {
+                try
+                {
+                    result = await LoginService.LoginAsync(User);
+                    if (!result)
+                        await DialogService.ShowAsync("登录失败", "账号不存或者密码错误");
+                }
+                catch (Exception e)
+                {
+                    await DialogService.ShowAsync("发生异常", e.Message);
+                    result = false;
+                }
+            }
             IsEnabled = true;
 
             return result;

@@ -51,7 +51,7 @@
                             </DoubleAnimation>
                             <DoubleAnimation Storyboard.TargetName="MyEffect"
                                              Storyboard.TargetProperty="Radius"
-                                             From="0" To="50" Duration="0:0:0.7"
+                                             From="0" To="25" Duration="0:0:0.3" 
                                              AutoReverse="False"></DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
@@ -76,7 +76,7 @@
                             </DoubleAnimation>
                             <DoubleAnimation Storyboard.TargetName="MyEffect"
                                              Storyboard.TargetProperty="Radius"
-                                             To="0" Duration="0:0:0.7"
+                                             To="0" Duration="0:0:0.3" 
                                              AutoReverse="False"></DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
@@ -115,14 +115,19 @@
                 用户ID
             </Label>
             <TextBox Grid.Row="2" x:Name="UserName"
+                        IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          Grid.Column="2" Grid.ColumnSpan="2"
+                         Text="{Binding ViewModel.User.UserId,Mode=TwoWay}"
                          Width="150"></TextBox>
             <Label Grid.Row="4" HorizontalContentAlignment="Center"
                        Grid.Column="0">密码</Label>
             <StackPanel Grid.Row="4" Width="150" Orientation="Horizontal"
                         Grid.Column="2" Grid.ColumnSpan="2">
-                <PasswordBox Width="120" x:Name="Password"></PasswordBox>
-                <Button HorizontalAlignment="Right" MinWidth="30" Padding="0" Click="LoginClicked">
+                <PasswordBox Width="120" x:Name="Password"
+                        IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
+                             ></PasswordBox>
+                <Button IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
+                    HorizontalAlignment="Right" MinWidth="30" Padding="0" Click="LoginClicked">
                     <materialDesign:PackIcon Kind="ArrowRight"></materialDesign:PackIcon>
                 </Button>
             </StackPanel>
