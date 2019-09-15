@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using CJGLXT.App.Views.Rank;
 using CJGLXT.App.Views.Score;
 using CJGLXT.App.Views.Student;
+using CJGLXT.ViewModels.Models;
 
 namespace CJGLXT.App
 {
@@ -26,8 +27,6 @@ namespace CJGLXT.App
         public MainPage()
         {
             User.UserType = UserType.Teacher;
-            User.UserName = "沈志峰";
-            User.UserId = "1";
             this.DataContext = this;
             InitializeComponent();
         }

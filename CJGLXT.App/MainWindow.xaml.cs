@@ -30,84 +30,29 @@ namespace CJGLXT.App
     {
         public MainWindow()
         {
-            Startup.ConfigureAsync();
-            User.UserType = UserType.Teacher;
-            User.UserName = "沈志峰";
-            User.UserId = "1";
-            this.DataContext = this;
             InitializeComponent();
             Frame = this.frame;
         }
 
-
-        public Oj1 Test {get; set; }=new Oj1();
         public static Frame Frame { get; private set; }
-        public static UserInfo User { get; set; }= new UserInfo();
 
         public static void CloseCurrent()
         {
             Frame = null;
-            var current=Application.Current?.MainWindow;
-            var login = new LoginWindow();
-            Application.Current.MainWindow = login;
-            login.Show();
-            current?.Close();
-        }
-        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ButtonBase_OnClick1(object sender, RoutedEventArgs e)
-        {
-            //var vm = ServiceLocator.Current().GetService<StudentDetailsViewModel>();
-            //var arg=new StudentDetailsArgs();
-            //arg.StudentId = "221701339";
-            //await vm.LoadAsync(arg);
-            //StudentsView.ViewModel = vm;
-            Frame.NavigationService.Navigate(new CourseRecordView());
-            
-        }
-
-        //private void LoadText(object sender, RoutedEventArgs e)
-        //{
-        //    this.Result.Text = Test.Oj2.Oj3.Text;
-        //}
-
-        //private void ChangeRef(object sender, RoutedEventArgs e)
-        //{
-        //    this.Test.Oj2=new Oj2();
-        //}
-        //private void UIElement_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        //{
-        //    if (sender is MaterialDesignThemes.Wpf.Card card)
-        //    {
-        //        if (card.Name.Equals("ICard"))
-        //        {
-        //            Frame.NavigationService.Navigate(new StudentsView());
-        //            this.tGrid.Visibility = Visibility.Hidden;
-        //            this.frame.Visibility = Visibility.Visible;
-        //        }
-        //    }
-
-        //}
-    }
-
-    public class Oj1:ObservableObject
-    {
-        private Oj2 _oj2=new Oj2();
-        public Oj2 Oj2
-        {
-            get => _oj2;
-            set => Set(ref _oj2, value);
+            try
+            {
+                var current = Application.Current.MainWindow;
+                var login = new LoginWindow();
+                Application.Current.MainWindow = login;
+                current?.Close();
+                login.Show();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "意外错误,即将关闭程序");
+                Application.Current.Shutdown();
+            }
         }
     }
-    public class Oj2
-    {
-        public Oj3 Oj3 { get; set; }=new Oj3();
-    }
-    public class Oj3
-    {
-        public string Text { get; set; } = Guid.NewGuid().ToString();
-    }
+
 }

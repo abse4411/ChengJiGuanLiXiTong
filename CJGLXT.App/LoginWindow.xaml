@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CJGLXT.App"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="400" Width="500">
+        Title="LoginWindow" Height="600" Width="800">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"></RowDefinition>
@@ -114,15 +114,15 @@
                        Grid.Column="0">
                 用户ID
             </Label>
-            <TextBox Grid.Row="2" 
+            <TextBox Grid.Row="2" x:Name="UserName"
                          Grid.Column="2" Grid.ColumnSpan="2"
                          Width="150"></TextBox>
             <Label Grid.Row="4" HorizontalContentAlignment="Center"
                        Grid.Column="0">密码</Label>
             <StackPanel Grid.Row="4" Width="150" Orientation="Horizontal"
                         Grid.Column="2" Grid.ColumnSpan="2">
-                <PasswordBox Width="120"></PasswordBox>
-                <Button HorizontalAlignment="Right" MinWidth="30" Padding="0">
+                <PasswordBox Width="120" x:Name="Password"></PasswordBox>
+                <Button HorizontalAlignment="Right" MinWidth="30" Padding="0" Click="LoginClicked">
                     <materialDesign:PackIcon Kind="ArrowRight"></materialDesign:PackIcon>
                 </Button>
             </StackPanel>

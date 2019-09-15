@@ -46,7 +46,7 @@ namespace CJGLXT.App.Services
             using (var dataService = DataServiceFactory.CreateDataService())
             {
                 CourseRecord record = new CourseRecord();
-                UpdateStudentFromModel(record, model);
+                UpdateCourseRecordFromModel(record, model);
                 var result = await dataService.AddOrUpdateCourseRecordAsync(record);
                 var newEvaluation = await GetCourseRecordAsync(record.StudentId, record.CourseId);
                 model.Merge(newEvaluation);
@@ -54,7 +54,7 @@ namespace CJGLXT.App.Services
             }
         }
 
-        private static void UpdateStudentFromModel(CourseRecord target, CourseRecordModel source)
+        private static void UpdateCourseRecordFromModel(CourseRecord target, CourseRecordModel source)
         {
             target.StudentId = source.StudentId;
             target.CourseId = source.CourseId;

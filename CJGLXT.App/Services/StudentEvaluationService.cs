@@ -44,7 +44,7 @@ namespace CJGLXT.App.Services
             using (var dataService = DataServiceFactory.CreateDataService())
             {
                 StudentEvaluation evaluation=new StudentEvaluation();
-                UpdateStudentFromModel(evaluation,model);
+                UpdateEvaluationFromModel(evaluation,model);
                 var result=await dataService.AddOrUpdateStudentEvaluationAsync(evaluation);
                 var newEvaluation =await GetStudentEvaluationAsync(evaluation.TeacherId, evaluation.StudentId);
                 newEvaluation.IsNew = false;
@@ -53,7 +53,7 @@ namespace CJGLXT.App.Services
             }
         }
 
-        private static void UpdateStudentFromModel(StudentEvaluation target, StudentEvaluationModel source)
+        private static void UpdateEvaluationFromModel(StudentEvaluation target, StudentEvaluationModel source)
         {
             target.StudentId = source.StudentId;
             target.TeacherId = source.TeacherId;
