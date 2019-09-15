@@ -9,11 +9,17 @@ namespace CJGLXT.Data.DataContexts
 {
     public class SqlServerDb: DbContext, IDataSource
     {
-        public static string DefaultConnectionString { get; set; }= "Server=(localdb)\\mssqllocaldb;Database=CJGLXTContext;Trusted_Connection=True;MultipleActiveResultSets=true";
+        private string _connectionString = "Server=(localdb)\\mssqllocaldb;Database=CJGLXTContext;Trusted_Connection=True;MultipleActiveResultSets=true";
+        public static string DefaultConnectionString { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(DefaultConnectionString);
+            if (!String.IsNullOrWhiteSpace(DefaultConnectionString))
+                optionsBuilder.UseSqlServer(DefaultConnectionString);
+            else
+            {
+                optionsBuilder.UseSqlServer(_connectionString);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
