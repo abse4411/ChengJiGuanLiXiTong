@@ -148,6 +148,9 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\Int32Converter.cs" />
     <Compile Include="Converters\NullableInt32Converter.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\CourseRecordService.cs" />
     <Compile Include="Services\DataServiceFactory\DataServiceFactory.cs" />
     <Compile Include="Services\DataServiceFactory\IDataServiceFactory.cs" />
@@ -156,6 +159,9 @@
     <Compile Include="Services\StudentEvaluationService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="UserInfo.cs" />
+    <Compile Include="Views\Rank\RankView.xaml.cs">
+      <DependentUpon>RankView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Score\CourseRecordDetails.xaml.cs">
       <DependentUpon>CourseRecordDetails.xaml</DependentUpon>
     </Compile>
@@ -174,6 +180,10 @@
     <Compile Include="Views\Student\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -190,6 +200,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Styles\MyStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Rank\RankView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,9 +261,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Rank\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\CJGLXT.Data\CJGLXT.Data.csproj">
       <Project>{fca05849-08b6-4ad5-8b2b-2bd6788d3735}</Project>

@@ -14,5 +14,6 @@ namespace CJGLXT.App
     {
         public UserType UserType { get; set; }
         public string UserId { get; set; }
+        public string UserName { get; set; }
     }
 }

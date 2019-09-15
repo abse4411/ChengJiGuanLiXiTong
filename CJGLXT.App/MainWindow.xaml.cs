@@ -30,8 +30,8 @@ namespace CJGLXT.App
         public MainWindow()
         {
             Startup.ConfigureAsync();
-            User = new UserInfo();
             User.UserType = UserType.Teacher;
+            User.UserName = "沈志峰";
             User.UserId = "1";
             this.DataContext = this;
             InitializeComponent();
@@ -42,7 +42,8 @@ namespace CJGLXT.App
         public Oj1 Test {get; set; }=new Oj1();
         public static Frame Frame { get; private set; }
 
-        public static UserInfo User { get; set; }
+        public static UserInfo User { get; set; }= new UserInfo();
+
 
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
@@ -68,6 +69,19 @@ namespace CJGLXT.App
         //private void ChangeRef(object sender, RoutedEventArgs e)
         //{
         //    this.Test.Oj2=new Oj2();
+        //}
+        //private void UIElement_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (sender is MaterialDesignThemes.Wpf.Card card)
+        //    {
+        //        if (card.Name.Equals("ICard"))
+        //        {
+        //            Frame.NavigationService.Navigate(new StudentsView());
+        //            this.tGrid.Visibility = Visibility.Hidden;
+        //            this.frame.Visibility = Visibility.Visible;
+        //        }
+        //    }
+
         //}
     }
 
