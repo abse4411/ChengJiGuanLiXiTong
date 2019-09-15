@@ -42,7 +42,7 @@ namespace CJGLXT.App.Views.Student
 
         private void Selector_OnSelected(object sender, RoutedEventArgs e)
         {
-                ViewModel.EArgs.TeacherId = MainWindow.User.UserId;
+                ViewModel.EArgs.TeacherId = MainPage.User.UserId;
                 ViewModel.OnSelected();
         }
 

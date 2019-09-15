@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -41,10 +42,17 @@ namespace CJGLXT.App
 
         public Oj1 Test {get; set; }=new Oj1();
         public static Frame Frame { get; private set; }
-
         public static UserInfo User { get; set; }= new UserInfo();
 
-
+        public static void CloseCurrent()
+        {
+            Frame = null;
+            var current=Application.Current?.MainWindow;
+            var login = new LoginWindow();
+            Application.Current.MainWindow = login;
+            login.Show();
+            current?.Close();
+        }
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
 

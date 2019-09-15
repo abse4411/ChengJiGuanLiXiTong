@@ -69,6 +69,9 @@ namespace CJGLXT.App
                 case "TCard":
                     MainWindow.Frame.NavigationService.Navigate(new RankView());
                     break;
+                case "ECard":
+                    MainWindow.CloseCurrent();
+                    break;
                 default:
                     break;
             }

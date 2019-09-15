@@ -30,15 +30,29 @@
             </Grid.ColumnDefinitions>
             <materialDesign:Card 
                 VerticalAlignment="Stretch"
-                     Grid.Row="0" Foreground="Black" Background="SkyBlue"
-                     Grid.Column="0" Grid.ColumnSpan="7">
+                     Grid.Row="0" Foreground="Black" Background="SpringGreen"
+                     Grid.Column="0" Grid.ColumnSpan="3">
                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    <Label VerticalAlignment="Center" 
                            FontSize="32">
                         你好，
                     </Label>
-                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
-                           FontSize="32" Content="{Binding User.UserName}">
+                    <Label VerticalAlignment="Center" 
+                           FontSize="32" Content="{Binding User.UserName,Mode=OneTime}">
+                    </Label>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card x:Name="ECard"
+                VerticalAlignment="Stretch" MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp"
+                Grid.Row="0" Foreground="Black" Background="OrangeRed" 
+                Grid.Column="4" Grid.ColumnSpan="3">
+                <StackPanel VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="ExitRun" 
+                                              HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                             Height="100" Width="100"></materialDesign:PackIcon>
+                    <Label HorizontalAlignment="Center"
+                           FontSize="32">
+                        退出登录
                     </Label>
                 </StackPanel>
             </materialDesign:Card>
@@ -58,7 +72,7 @@
             </materialDesign:Card>
             <materialDesign:Card x:Name="SCard"
                 VerticalAlignment="Stretch" MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp"
-                     Grid.Row="2"  Foreground="Black" Background="SkyBlue"
+                     Grid.Row="2"  Foreground="Black" Background="LightSeaGreen"
                      Grid.Column="4" Grid.ColumnSpan="3">
                 <StackPanel VerticalAlignment="Center">
                     <materialDesign:PackIcon Kind="Score" 
@@ -72,7 +86,7 @@
             </materialDesign:Card>
             <materialDesign:Card x:Name="TCard"
                 VerticalAlignment="Stretch" MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp"
-                     Grid.Row="4"  Foreground="Black" Background="SkyBlue"
+                     Grid.Row="4"  Foreground="Black" Background="DodgerBlue"
                      Grid.Column="4" Grid.ColumnSpan="3">
                 <StackPanel VerticalAlignment="Center">
                     <materialDesign:PackIcon Kind="ChartAreaspline" 

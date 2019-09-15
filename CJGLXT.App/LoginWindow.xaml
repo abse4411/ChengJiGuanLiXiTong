@@ -1,0 +1,137 @@
+﻿<Window x:Class="CJGLXT.App.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CJGLXT.App"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="400" Width="500">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Viewbox Stretch="UniformToFill" Grid.Row="0" Grid.RowSpan="2" 
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Image x:Name="MyImage" Source="Assets/135.jpg">
+                <Image.RenderTransform>
+                    <ScaleTransform x:Name="MyTransform"></ScaleTransform>
+                </Image.RenderTransform>
+                <Image.Effect>
+                    <BlurEffect x:Name="MyEffect"></BlurEffect>
+                </Image.Effect>
+            </Image>
+
+        </Viewbox>
+        <Rectangle Width="240" Height="140" Grid.Row="0" Grid.RowSpan="2" 
+            Fill="WhiteSmoke" Opacity="0.2" RadiusX="4" RadiusY="4"
+                   HorizontalAlignment="Center" VerticalAlignment="Center">
+        </Rectangle>
+        <Grid x:Name="MyGrid" Grid.Row="0" Grid.RowSpan="2" 
+            HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.Triggers>
+                <EventTrigger RoutedEvent="UIElement.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="MyTransform"
+                                             Storyboard.TargetProperty="ScaleX" 
+                                             From="1" To="1.05" Duration="0:0:0.3"
+                                             AutoReverse="False">
+                            </DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetName="MyTransform"
+                                             Storyboard.TargetProperty="ScaleY" 
+                                             From="1" To="1.05" Duration="0:0:0.3"
+                                             AutoReverse="False">
+                            </DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetName="MyImage"
+                                             Storyboard.TargetProperty="Opacity" 
+                                             From="1" To="0.8" Duration="0:0:0.3"
+                                             AutoReverse="False">
+                            </DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetName="MyEffect"
+                                             Storyboard.TargetProperty="Radius"
+                                             From="0" To="50" Duration="0:0:0.7"
+                                             AutoReverse="False"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="UIElement.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="MyTransform"
+                                             Storyboard.TargetProperty="ScaleX" 
+                                             To="1" Duration="0:0:0.3"
+                                             AutoReverse="False">
+                            </DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetName="MyTransform"
+                                             Storyboard.TargetProperty="ScaleY" 
+                                             To="1" Duration="0:0:0.3"
+                                             AutoReverse="False">
+                            </DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetName="MyImage"
+                                             Storyboard.TargetProperty="Opacity" 
+                                             To="1" Duration="0:0:0.3"
+                                             AutoReverse="False">
+                            </DoubleAnimation>
+                            <DoubleAnimation Storyboard.TargetName="MyEffect"
+                                             Storyboard.TargetProperty="Radius"
+                                             To="0" Duration="0:0:0.7"
+                                             AutoReverse="False"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Grid.Triggers>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                       Grid.Row="0" Grid.RowSpan="5" 
+                       Opacity="0" Fill="WhiteSmoke"
+                       Grid.Column="0" Grid.ColumnSpan="4">
+            </Rectangle>
+            <Label Grid.Row="0" HorizontalContentAlignment="Center"
+                   Grid.Column="0">
+                登录身份
+            </Label>
+            <RadioButton Grid.Row="0" Grid.Column="2" IsChecked="True"
+                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                Content="学生" x:Name="Student" GroupName="UserType"></RadioButton>
+            <RadioButton Grid.Row="0" Grid.Column="3" 
+                         VerticalAlignment="Center" HorizontalAlignment="Center"
+                Content="教师" x:Name="Teacher" GroupName="UserType"></RadioButton>
+            <Label Grid.Row="2" HorizontalContentAlignment="Center"
+                       Grid.Column="0">
+                用户ID
+            </Label>
+            <TextBox Grid.Row="2" 
+                         Grid.Column="2" Grid.ColumnSpan="2"
+                         Width="150"></TextBox>
+            <Label Grid.Row="4" HorizontalContentAlignment="Center"
+                       Grid.Column="0">密码</Label>
+            <StackPanel Grid.Row="4" Width="150" Orientation="Horizontal"
+                        Grid.Column="2" Grid.ColumnSpan="2">
+                <PasswordBox Width="120"></PasswordBox>
+                <Button HorizontalAlignment="Right" MinWidth="30" Padding="0">
+                    <materialDesign:PackIcon Kind="ArrowRight"></materialDesign:PackIcon>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="WhiteSmoke">
+            <Label  VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   FontSize="32" FontWeight="Bold">
+                成绩管理系统
+            </Label>
+        </Grid>
+    </Grid>
+</Window>
