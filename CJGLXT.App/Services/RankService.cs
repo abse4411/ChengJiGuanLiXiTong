@@ -45,13 +45,13 @@ namespace CJGLXT.App.Services
                     var hasScoreCourses = student.CourseRecords.Where(c => c.Score.HasValue).ToList();
                     if (hasScoreCourses.Any())
                     {
-                        int count = hasScoreCourses.Count;
+                        double count = hasScoreCourses.Count;
                         hasScoreCourses.ForEach(c =>
                         {
                             student.AverageScore += (c.Score.Value / count);
                         });
-                        student.MinScore = hasScoreCourses.Max(c => c.Score.Value);
-                        student.MaxScore = hasScoreCourses.Min(c => c.Score.Value);
+                        student.MaxScore = hasScoreCourses.Max(c => c.Score.Value);
+                        student.MinScore = hasScoreCourses.Min(c => c.Score.Value);
                     }
                 }
                 list = list.OrderByDescending(s => s.AverageScore).ToList();
