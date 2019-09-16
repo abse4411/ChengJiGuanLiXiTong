@@ -7,6 +7,29 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <DockPanel >
+            <Border   Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
+                <Label FontSize="24" >学生成绩列表</Label>
+            </Border>
+            <Border VerticalAlignment="Stretch" Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
+                <ListView x:Name="list" 
+                          SelectionMode="Single" 
+                          ItemsSource="{Binding ViewModel.Items}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="课程ID"
+                                            DisplayMemberBinding="{Binding CourseId,Mode=OneTime}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="课程名"
+                                            DisplayMemberBinding="{Binding Course.Name,Mode=OneTime}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="成绩"
+                                            DisplayMemberBinding="{Binding Score,Mode=OneTime}">
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+        </DockPanel>
     </Grid>
 </UserControl>

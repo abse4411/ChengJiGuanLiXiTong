@@ -9,9 +9,19 @@
       Title="RankView">
 
     <Grid>
-        <DockPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0" Grid.ColumnSpan="2">
             <Border   Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
-                <Label FontSize="24" Grid.Row="0">学生成绩统计</Label>
+                <Grid>
+                    <Label FontSize="24" >学生成绩统计</Label>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Command="{Binding ViewModel.RefreshCommand}" Margin="4" >刷新列表</Button>
+                    </StackPanel>
+                </Grid>
             </Border>
             <Border VerticalAlignment="Stretch" Style="{StaticResource MyBorder}" DockPanel.Dock="Top">
                 <ListView x:Name="list" 
@@ -22,20 +32,29 @@
                           ItemsSource="{Binding ViewModel.Items}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="课程ID"
-                                            DisplayMemberBinding="{Binding CourseId,Mode=OneTime}">
+                            <GridViewColumn Header="排名"
+                                            DisplayMemberBinding="{Binding Rank,Mode=OneTime}">
                             </GridViewColumn>
-                            <GridViewColumn Header="课程名"
-                                            DisplayMemberBinding="{Binding Course.Name,Mode=OneTime}">
+                            <GridViewColumn Header="学生ID" 
+                                            DisplayMemberBinding="{Binding StudentId,Mode=OneTime}">
                             </GridViewColumn>
-                            <GridViewColumn Header="成绩"
-                                            DisplayMemberBinding="{Binding Score}">
+                            <GridViewColumn Header="姓名"
+                                            DisplayMemberBinding="{Binding Name,Mode=OneTime}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="平均分"
+                                            DisplayMemberBinding="{Binding AverageScore,Mode=OneTime}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="最高分"
+                                            DisplayMemberBinding="{Binding MaxScore,Mode=OneTime}">
+                            </GridViewColumn>
+                            <GridViewColumn Header="最低分"
+                                            DisplayMemberBinding="{Binding MinScore,Mode=OneTime}">
                             </GridViewColumn>
                         </GridView>
                     </ListView.View>
                 </ListView>
             </Border>
-
         </DockPanel>
+        <local:StudentCourseDetails Grid.Column="2"></local:StudentCourseDetails>
     </Grid>
 </Page>

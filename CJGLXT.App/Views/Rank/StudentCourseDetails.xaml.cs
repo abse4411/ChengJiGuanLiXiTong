@@ -23,7 +23,6 @@ namespace CJGLXT.App.Views.Rank
     {
         public StudentCourseDetails()
         {
-            
             ViewModel = RankView.StudentCourseListViewModel;
             this.DataContext = this;
             InitializeComponent();

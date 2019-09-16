@@ -24,6 +24,7 @@ namespace CJGLXT.App.Configuration
             serviceCollection.AddSingleton<IStudentService, StudentService>();
             serviceCollection.AddSingleton<IStudentEvaluationService, StudentEvaluationService>();
             serviceCollection.AddScoped<ICourseRecordService, CourseRecordService>();
+            serviceCollection.AddScoped<IRankService, RankService>();
             serviceCollection.AddScoped<ILoginService, LoginService>();
             serviceCollection.AddSingleton<IDialogService, DialogService>();
 
@@ -33,6 +34,8 @@ namespace CJGLXT.App.Configuration
             serviceCollection.AddTransient<CourseRecordViewModel>();
             serviceCollection.AddTransient<LoginViewModel>();
             serviceCollection.AddTransient<CourseRecordListViewModel>();
+            serviceCollection.AddTransient<StudentRankListViewModel>();
+            serviceCollection.AddTransient<StudentCourseListViewModel>();
 
             _rootServiceProvider = serviceCollection.BuildServiceProvider();
         }
