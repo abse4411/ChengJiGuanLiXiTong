@@ -50,16 +50,16 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="学生ID" 
-                                            DisplayMemberBinding="{Binding StudentId}">
+                                            DisplayMemberBinding="{Binding StudentId,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="姓名"
-                                            DisplayMemberBinding="{Binding Student.Name}">
+                                            DisplayMemberBinding="{Binding Student.Name,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="课程ID"
-                                            DisplayMemberBinding="{Binding CourseId}">
+                                            DisplayMemberBinding="{Binding CourseId,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="课程名"
-                                            DisplayMemberBinding="{Binding Course.Name}">
+                                            DisplayMemberBinding="{Binding Course.Name,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="成绩"
                                             DisplayMemberBinding="{Binding Score}">

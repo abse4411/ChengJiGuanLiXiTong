@@ -38,7 +38,7 @@
                         你好，
                     </Label>
                     <Label VerticalAlignment="Center" 
-                           FontSize="32" Content="{Binding User.UserName}">
+                           FontSize="32" Content="{Binding User.UserName,Mode=OneTime}">
                     </Label>
                 </StackPanel>
             </materialDesign:Card>

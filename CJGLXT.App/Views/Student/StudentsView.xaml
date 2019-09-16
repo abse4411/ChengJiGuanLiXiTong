@@ -51,19 +51,19 @@
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="学生Id" 
-                                            DisplayMemberBinding="{Binding StudentId}">
+                                            DisplayMemberBinding="{Binding StudentId,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="姓名"
-                                            DisplayMemberBinding="{Binding Name}">
+                                            DisplayMemberBinding="{Binding Name,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="性别"
-                                            DisplayMemberBinding="{Binding Sex}">
+                                            DisplayMemberBinding="{Binding Sex,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="年龄"
-                                            DisplayMemberBinding="{Binding Age}">
+                                            DisplayMemberBinding="{Binding Age,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="密码"
-                                            DisplayMemberBinding="{Binding Password}">
+                                            DisplayMemberBinding="{Binding Password,Mode=OneTime}">
                             </GridViewColumn>
                         </GridView>
                     </ListView.View>

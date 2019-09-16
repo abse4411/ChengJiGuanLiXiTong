@@ -68,6 +68,7 @@ namespace CJGLXT.App
                     MainWindow.Frame.NavigationService.Navigate(new RankView());
                     break;
                 case "ECard":
+                    User = null;
                     MainWindow.CloseCurrent();
                     break;
                 default:

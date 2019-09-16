@@ -34,7 +34,6 @@ namespace CJGLXT.App.Views.Student
             StudentDetailsViewModel = null;
             StudentEvaluationViewModel = null;
         }
-
         public StudentListViewModel ViewModel { get; }
 
         public static StudentDetailsViewModel StudentDetailsViewModel { get; private set; }
@@ -45,6 +44,7 @@ namespace CJGLXT.App.Views.Student
                 ViewModel.EArgs.TeacherId = MainPage.User.UserId;
                 ViewModel.OnSelected();
         }
+
 
         //Sort
         private void List_OnClick(object sender, RoutedEventArgs e)
