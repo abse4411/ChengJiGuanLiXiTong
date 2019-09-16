@@ -43,7 +43,7 @@ namespace CJGLXT.ViewModels.ViewModels
         {
             if (!await RefreshAsync())
             {
-                await DialogService.ShowAsync("加载失败", "请重试");
+                //await DialogService.ShowAsync("加载失败", "请重试");
             }
         }
 
@@ -68,6 +68,7 @@ namespace CJGLXT.ViewModels.ViewModels
             }
             catch (Exception e)
             {
+                await DialogService.ShowAsync("载入失败", e.InnerException?.Message ?? e.Message);
                 return false;
             }
             return true;
