@@ -12,6 +12,6 @@ namespace CJGLXT.Data.Data
 
         public string Description { get; set; }
 
-        public List<CourseRecord> CourseRecords { get; set; }
+        public IList<CourseRecord> CourseRecords { get; set; }
     }
 }

@@ -11,10 +11,15 @@ namespace CJGLXT.App.Configuration
     public static class Startup
     {
         private static readonly ServiceCollection _serviceCollection = new ServiceCollection();
+        private static bool _isConfigured = false;
 
         public static Task ConfigureAsync()
         {
-            ServiceLocator.Configure(_serviceCollection);
+            if(!_isConfigured)
+            {
+                ServiceLocator.Configure(_serviceCollection);
+                _isConfigured = true;
+            }
 
             return Task.CompletedTask;
         }

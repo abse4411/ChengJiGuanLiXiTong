@@ -10,7 +10,7 @@
       Title="MainPage">
 
     <Grid>
-        <Grid Margin="10" x:Name="tGrid"
+        <Grid Margin="10" x:Name="tGrid" Visibility="{Binding IsTeacher,Mode=OneTime,Converter={StaticResource BoolToVisibilityConverter}}"
               HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>

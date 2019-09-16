@@ -61,7 +61,6 @@ namespace CJGLXT.ViewModels.ViewModels
             }
             catch (Exception e)
             {
-                Items = new List<CourseRecordModel>();
                 return false;
             }
             return true;

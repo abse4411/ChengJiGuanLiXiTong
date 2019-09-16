@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +33,9 @@ namespace CJGLXT.App
         }
 
         public static UserInfo User { get; set; }
+
+        public bool IsStudent => User.UserType == UserType.Student;
+        public bool IsTeacher => !IsStudent;
 
         private void UIElement_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {

@@ -8,6 +8,6 @@ namespace CJGLXT.Data.Data
     {
         public string TeacherId { get; set; }
 
-        public List<StudentEvaluation> StudentEvaluations { get; set; }
+        public IList<StudentEvaluation> StudentEvaluations { get; set; }
     }
 }

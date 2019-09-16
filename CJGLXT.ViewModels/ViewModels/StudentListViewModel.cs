@@ -68,7 +68,6 @@ namespace CJGLXT.ViewModels.ViewModels
             }
             catch (Exception e)
             {
-                Items = new List<StudentModel>();
                 return false;
             }
             return true;
