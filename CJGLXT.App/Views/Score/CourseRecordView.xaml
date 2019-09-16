@@ -62,7 +62,7 @@
                                             DisplayMemberBinding="{Binding Course.Name,Mode=OneTime}">
                             </GridViewColumn>
                             <GridViewColumn Header="成绩"
-                                            DisplayMemberBinding="{Binding Score}">
+                                            DisplayMemberBinding="{Binding Score,Mode=OneTime}">
                             </GridViewColumn>
                         </GridView>
                     </ListView.View>

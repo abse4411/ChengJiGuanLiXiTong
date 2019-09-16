@@ -27,11 +27,10 @@ namespace CJGLXT.App.Services
                     student.CourseRecords = await dataService.GetStudentCourseRecordsAsync(student.StudentId);
                 }
             }
-            await WorkOutRank(list);
-            return list;
+            return await WorkOutRank(list);
         }
 
-        private static Task WorkOutRank(IList<RankModel> list)
+        private static Task<IList<RankModel>> WorkOutRank(IList<RankModel> list)
         {
             return Task.Run(() =>
             {
@@ -63,6 +62,7 @@ namespace CJGLXT.App.Services
                         s.Rank = ++rank;
                     lastScore = s.AverageScore;
                 }
+                return list;
             });
         }
     }

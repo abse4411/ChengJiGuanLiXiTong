@@ -167,6 +167,9 @@
     <Compile Include="Views\Rank\RankView.xaml.cs">
       <DependentUpon>RankView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Rank\StudentCourseDetails.xaml.cs">
+      <DependentUpon>StudentCourseDetails.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Score\CourseRecordDetails.xaml.cs">
       <DependentUpon>CourseRecordDetails.xaml</DependentUpon>
     </Compile>
@@ -213,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Rank\RankView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Rank\StudentCourseDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
