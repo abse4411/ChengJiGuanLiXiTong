@@ -9,7 +9,7 @@
       d:DesignHeight="600" d:DesignWidth="800"
       Title="MainPage">
 
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Grid Margin="10" x:Name="tGrid" Visibility="{Binding IsTeacher,Mode=OneTime,Converter={StaticResource BoolToVisibilityConverter}}"
               HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid.RowDefinitions>
@@ -98,6 +98,10 @@
                     </Label>
                 </StackPanel>
             </materialDesign:Card>
+        </Grid>
+        <Grid x:Name="sGrid" Margin="10" Visibility="{Binding IsStudent,Mode=OneTime,Converter={StaticResource BoolToVisibilityConverter}}"
+              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Button >SADASDASdad</Button>
         </Grid>
     </Grid>
 </Page>

@@ -30,6 +30,10 @@ namespace CJGLXT.App
         {
             this.DataContext = this;
             InitializeComponent();
+            if(IsStudent)
+                this.MainGrid.Children.Remove(tGrid);
+            else
+                this.MainGrid.Children.Remove(sGrid);
         }
 
         public static UserInfo User { get; set; }
