@@ -39,9 +39,13 @@ namespace CJGLXT.App
             ViewModel.User.Password = String.IsNullOrEmpty(this.Password.Password)?null: this.Password.Password;
             if (await ViewModel.Login())
             {
-                MainPage.User.UserType = userType;
-                MainPage.User.UserName = ViewModel.User.UserName;
-                MainPage.User.UserId = ViewModel.User.UserId;
+                var user = new UserInfo
+                {
+                    UserType = userType,
+                    UserName = ViewModel.User.UserName,
+                    UserId = ViewModel.User.UserId,
+                };
+                MainPage.User = user;
                 OnLogin();
             }
         }

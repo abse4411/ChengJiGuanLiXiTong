@@ -26,12 +26,11 @@ namespace CJGLXT.App
     {
         public MainPage()
         {
-            User.UserType = UserType.Teacher;
             this.DataContext = this;
             InitializeComponent();
         }
 
-        public static UserInfo User { get; set; }=new UserInfo();
+        public static UserInfo User { get; set; }
 
         private void UIElement_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {

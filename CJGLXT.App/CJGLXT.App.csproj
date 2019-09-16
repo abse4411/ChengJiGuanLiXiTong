@@ -270,9 +270,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\135.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CJGLXT.Data\CJGLXT.Data.csproj">
       <Project>{fca05849-08b6-4ad5-8b2b-2bd6788d3735}</Project>
       <Name>CJGLXT.Data</Name>
@@ -281,6 +278,9 @@
       <Project>{3e05e822-6143-46d7-a706-af77e750712b}</Project>
       <Name>CJGLXT.ViewModels</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\timg.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

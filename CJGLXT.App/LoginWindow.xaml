@@ -14,13 +14,10 @@
         </Grid.RowDefinitions>
         <Viewbox Stretch="UniformToFill" Grid.Row="0" Grid.RowSpan="2" 
                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Image x:Name="MyImage" Source="Assets/135.jpg">
+            <Image x:Name="MyImage" Source="Assets/timg.jpg">
                 <Image.RenderTransform>
                     <ScaleTransform x:Name="MyTransform"></ScaleTransform>
                 </Image.RenderTransform>
-                <Image.Effect>
-                    <BlurEffect x:Name="MyEffect"></BlurEffect>
-                </Image.Effect>
             </Image>
 
         </Viewbox>
@@ -49,10 +46,6 @@
                                              From="1" To="0.8" Duration="0:0:0.3"
                                              AutoReverse="False">
                             </DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="MyEffect"
-                                             Storyboard.TargetProperty="Radius"
-                                             From="0" To="25" Duration="0:0:0.3" 
-                                             AutoReverse="False"></DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
@@ -74,10 +67,6 @@
                                              To="1" Duration="0:0:0.3"
                                              AutoReverse="False">
                             </DoubleAnimation>
-                            <DoubleAnimation Storyboard.TargetName="MyEffect"
-                                             Storyboard.TargetProperty="Radius"
-                                             To="0" Duration="0:0:0.3" 
-                                             AutoReverse="False"></DoubleAnimation>
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger>
