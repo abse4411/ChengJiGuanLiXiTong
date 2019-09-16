@@ -15,7 +15,7 @@
                 <Grid >
                     <StackPanel >
                         <Label Style="{StaticResource MyLabel}">学生ID</Label>
-                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.StudentId,Mode=OneWay}"
+                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.StudentId,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
                          IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
                         <Label Style="{StaticResource MyLabel}">课程ID</Label>
