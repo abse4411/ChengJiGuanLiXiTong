@@ -28,15 +28,6 @@ namespace CJGLXT.App.Views.Rank
             InitializeComponent();
         }
 
-        public StudentCourseListViewModel ViewModel
-        {
-            get { return (StudentCourseListViewModel)GetValue(ViewModelProperty); }
-            set { SetValue(ViewModelProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for ViewModel.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ViewModelProperty =
-            DependencyProperty.Register("ViewModel", typeof(StudentCourseListViewModel), typeof(StudentCourseDetails), new PropertyMetadata(null));
-
+        public StudentCourseListViewModel ViewModel { get; }
     }
 }

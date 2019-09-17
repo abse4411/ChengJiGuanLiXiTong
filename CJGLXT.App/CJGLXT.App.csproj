@@ -186,9 +186,6 @@
     <Compile Include="Views\Student\StudentEvaluationDetails.xaml.cs">
       <DependentUpon>StudentEvaluationDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Student\StudentList.xaml.cs">
-      <DependentUpon>StudentList.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Student\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
@@ -246,10 +243,6 @@
     <Page Include="Views\Student\StudentEvaluationDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Student\StudentList.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Student\StudentsView.xaml">
       <Generator>MSBuild:Compile</Generator>
