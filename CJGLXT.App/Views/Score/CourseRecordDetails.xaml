@@ -17,11 +17,11 @@
                         <Label Style="{StaticResource MyLabel}">学生ID</Label>
                         <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.StudentId,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
-                         IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
+                         IsReadOnly="{Binding ViewModel.ItemIsNotNew,Mode=OneWay}"></TextBox>
                         <Label Style="{StaticResource MyLabel}">课程ID</Label>
                         <TextBox Margin="10,0,10,10"  Text="{Binding ViewModel.EditableItem.CourseId,Mode=TwoWay,Converter={StaticResource Int32Converter}}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
-                         IsReadOnly="{Binding ViewModel.IsReadOnly,Mode=OneWay}"></TextBox>
+                         IsReadOnly="{Binding ViewModel.ItemIsNotNew,Mode=OneWay}"></TextBox>
                         <Label Style="{StaticResource MyLabel}">成绩</Label>
                         <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Score,Mode=TwoWay,Converter={StaticResource NullableInt32Converter}}"
                                  IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"

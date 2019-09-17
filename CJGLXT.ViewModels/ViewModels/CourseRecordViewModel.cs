@@ -31,6 +31,7 @@ namespace CJGLXT.ViewModels.ViewModels
         public string TitleEdit => Item == null ? "编辑成绩" : "学生成绩";
 
         public override bool ItemIsNew => Item?.IsNew ?? true;
+        public bool ItemIsNotNew => !ItemIsNew;
 
         public CourseRecordArgs ViewModelArgs { get; private set; }
 

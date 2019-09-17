@@ -134,7 +134,6 @@ namespace CJGLXT.ViewModels.ViewModels
                     {
                         ProgressValue = 13;
                         Message = $"数据库已经存在，请删除后重试";
-                        IsSuccess = false;
                     }
                 }
             }
