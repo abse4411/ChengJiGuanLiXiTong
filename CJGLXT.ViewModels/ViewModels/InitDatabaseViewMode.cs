@@ -109,10 +109,12 @@ namespace CJGLXT.ViewModels.ViewModels
             IsLoading = true;
             try
             {
-                ProgressMaximum = 10;
+                ProgressMaximum = 13;
+                ProgressValue = 0;
+                Message = "创建连接";
+                SqlServeStrings.DefaultConnectionString = ConnectionString;
                 ProgressValue = 1;
                 Message = "正在连接数据库";
-                SqlServeStrings.DefaultConnectionString = ConnectionString;
                 using (var db = new SqlServerDb())
                 {
                     var dbCreator = db.GetService<IDatabaseCreator>() as RelationalDatabaseCreator;
@@ -124,13 +126,13 @@ namespace CJGLXT.ViewModels.ViewModels
                         ProgressValue = 3;
                         Message = "初始化种子数据";
                         await CopyDataTables(db);
-                        ProgressValue = 10;
+                        ProgressValue = 13;
                         Message = "数据库初始化成功";
                         IsSuccess = true;
                     }
                     else
                     {
-                        ProgressValue = 10;
+                        ProgressValue = 13;
                         Message = $"数据库已经存在，请删除后重试";
                         IsSuccess = false;
                     }
@@ -139,7 +141,7 @@ namespace CJGLXT.ViewModels.ViewModels
             catch (Exception e)
             {
                 Message = $"初始化数据库失败";
-                await DialogService.ShowAsync("数据库连接失败", e.InnerException?.Message ?? e.Message);
+                await DialogService.ShowAsync("数据库初始化失败", e.InnerException?.Message ?? e.Message);
                 IsSuccess = false;
             }
             IsLoading = false;
@@ -151,13 +153,34 @@ namespace CJGLXT.ViewModels.ViewModels
             Message = "添加种子数据";
             ProgressValue = 4;
             await Task.Delay(1000);
-            Message = "添加化学生数据";
-            ProgressValue = 4;
+            Message = "添加学生生数据";
+            ProgressValue = 5;
             await db.Students.AddRangeAsync(SeedData.GetStudents());
-
-
-
+            await Task.Delay(1000);
+            Message = "添加教师数据";
+            ProgressValue = 6;
+            await db.Teachers.AddRangeAsync(SeedData.GetTeachers());
+            await Task.Delay(1000);
+            Message = "添加课程数据";
+            ProgressValue = 7;
+            await db.Courses.AddRangeAsync(SeedData.GetCourses());
+            await Task.Delay(1000);
+            Message = "添加选课数据";
+            ProgressValue = 8;
+            await db.CourseRecords.AddRangeAsync(SeedData.GetCourseRecords());
+            await Task.Delay(1000);
+            Message = "添加学生评价数据";
+            ProgressValue = 9;
+            await db.StudentEvaluations.AddRangeAsync(SeedData.GetStudentEvaluations());
+            await Task.Delay(1000);
+            Message = "添加教师评价数据";
+            ProgressValue = 10;
+            await db.TeacherEvaluations.AddRangeAsync(SeedData.GetTeacherEvaluations());
+            Message = "保存更改";
+            ProgressValue = 11;
             await db.SaveChangesAsync();
+            Message = "已保存";
+            ProgressValue = 12;
         }
     }
 }
