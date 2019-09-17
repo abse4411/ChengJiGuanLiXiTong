@@ -156,8 +156,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
                 NotifyPropertyChanged(nameof(ItemIsNew));
             }
-            else
-                IsEnabled = true;
+            IsEnabled = true;
         }
 
         public ICommand DeleteCommand => new RelayCommand(OnDelete);

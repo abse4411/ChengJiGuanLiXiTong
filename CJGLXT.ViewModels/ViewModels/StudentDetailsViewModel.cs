@@ -31,8 +31,6 @@ namespace CJGLXT.ViewModels.ViewModels
 
         public override bool ItemIsNew => Item?.IsNew ?? true;
 
-        public bool ItemIsNotNew => !ItemIsNew;
-
         public StudentDetailsArgs ViewModelArgs { get; private set; }
 
         public async Task LoadAsync(StudentDetailsArgs args)
@@ -42,7 +40,6 @@ namespace CJGLXT.ViewModels.ViewModels
             if (ViewModelArgs.IsNew)
             {
                 Item = new StudentModel();
-                EditableItem = new StudentModel();
                 IsEditMode = true;
             }
             else

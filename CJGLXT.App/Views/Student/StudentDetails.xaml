@@ -16,8 +16,14 @@
                     <StackPanel  >
                         <Label Style="{StaticResource MyLabel}">学生ID</Label>
                         <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.StudentId,Mode=TwoWay}"
-                         IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
-                         IsReadOnly="{Binding ViewModel.ItemIsNotNew,Mode=OneWay}"></TextBox>
+                         IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}">
+                            <TextBox.IsReadOnly>
+                                <MultiBinding Converter="{StaticResource CustomMultiValueConvertor}">
+                                    <Binding Path="ViewModel.IsEditMode" />
+                                    <Binding Path="ViewModel.ItemIsNew" />
+                                </MultiBinding>
+                            </TextBox.IsReadOnly>
+                        </TextBox>
                         <Label Style="{StaticResource MyLabel}">姓名</Label>
                         <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Name,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
