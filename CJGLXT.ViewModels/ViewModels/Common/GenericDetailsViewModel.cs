@@ -21,7 +21,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
         public virtual string Title { get; }
 
-        private TModel _item = null;
+        private TModel _item = new TModel();
         public TModel Item
         {
             get => _item;
@@ -156,7 +156,8 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
                 NotifyPropertyChanged(nameof(ItemIsNew));
             }
-            IsEnabled = true;
+            else
+                IsEnabled = true;
         }
 
         public ICommand DeleteCommand => new RelayCommand(OnDelete);

@@ -26,7 +26,7 @@ namespace CJGLXT.App
 
         public LoginWindow()
         {
-            Startup.ConfigureAsync();
+            //Startup.ConfigureAsync();
             ViewModel = ServiceLocator.Current().GetService<LoginViewModel>();
             this.DataContext = this;
             InitializeComponent();

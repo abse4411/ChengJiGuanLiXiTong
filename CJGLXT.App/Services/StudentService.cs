@@ -53,7 +53,19 @@ namespace CJGLXT.App.Services
             return result;
         }
 
-        public async Task<int> AddOrUpdateStudentAsync(StudentModel model)
+        public async Task<int> AddStudentAsync(StudentModel model)
+        {
+            using (var dataService = DataServiceFactory.CreateDataService())
+            {
+                var student = new Student();
+                UpdateStudentFromModel(student, model);
+                var result = await dataService.AddStudentAsync(student);
+                model.Merge(await GetStudentAsync(student.StudentId));
+                return result;
+            }
+        }
+
+        public async Task<int> UpdateStudentAsync(StudentModel model)
         {
             string id = model.StudentId;
             using (var dataService = DataServiceFactory.CreateDataService())
@@ -62,7 +74,7 @@ namespace CJGLXT.App.Services
                 if (student != null)
                 {
                     UpdateStudentFromModel(student, model);
-                    var result = await dataService.AddOrUpdateStudentAsync(student);
+                    var result = await dataService.UpdateStudentAsync(student);
                     model.Merge(await GetStudentAsync(student.StudentId));
                     return result;
                 }
@@ -72,6 +84,7 @@ namespace CJGLXT.App.Services
 
         private static void UpdateStudentFromModel(Student target, StudentModel source)
         {
+            target.StudentId = source.StudentId;
             target.Name = source.Name;
             target.Password = source.Password;
             target.Sex = source.Sex;

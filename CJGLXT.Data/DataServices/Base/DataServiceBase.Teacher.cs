@@ -20,12 +20,15 @@ namespace CJGLXT.Data.DataServices.Base
             return await _dataSource.Teachers.AsNoTracking().ToListAsync();
         }
 
-        public async Task<int> AddOrUpdateTeacherAsync(Teacher teacher)
+        public async Task<int> AddTeacherAsync(Teacher teacher)
         {
-            if (string.IsNullOrWhiteSpace(teacher.TeacherId))
-                await _dataSource.Teachers.AddAsync(teacher);
-            else
-                _dataSource.Teachers.Update(teacher);
+            await _dataSource.Teachers.AddAsync(teacher);
+            return await _dataSource.SaveChangesAsync();
+        }
+
+        public async Task<int> UpdateTeacherAsync(Teacher teacher)
+        {
+            _dataSource.Teachers.Update(teacher);
             return await _dataSource.SaveChangesAsync();
         }
 

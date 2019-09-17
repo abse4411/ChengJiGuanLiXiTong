@@ -11,16 +11,20 @@ namespace CJGLXT.Data.DataServices
         Task<Student> GetStudentAsync(string id);
         Task<IList<Student>> GetStudentsAsync();
         Task<int> AddOrUpdateStudentAsync(Student student);
+        Task<int> AddStudentAsync(Student student);
+        Task<int> UpdateStudentAsync(Student student);
         Task<int> DeleteStudentAsync(Student student);
 
         Task<Teacher> GetTeacherAsync(string id);
         Task<IList<Teacher>> GetTeachersAsync();
-        Task<int> AddOrUpdateTeacherAsync(Teacher teacher);
+        Task<int> AddTeacherAsync(Teacher teacher);
+        Task<int> UpdateTeacherAsync(Teacher teacher);
         Task<int> DeleteTeacherAsync(Teacher teacher);
 
         Task<Course> GetCourseAsync(int id);
         Task<IList<Course>> GetCoursesAsync();
-        Task<int> AddOrUpdateCourseAsync(Course course);
+        Task<int> AddCourseAsync(Course course);
+        Task<int> UpdateCourseAsync(Course course);
         Task<int> DeleteCourseAsync(Course course);
 
         Task<CourseRecord> GetCourseRecordAsync(int cid, string sid);

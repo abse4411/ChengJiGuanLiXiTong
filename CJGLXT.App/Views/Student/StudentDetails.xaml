@@ -15,8 +15,9 @@
                 <Grid  >
                     <StackPanel  >
                         <Label Style="{StaticResource MyLabel}">学生ID</Label>
-                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.StudentId,Mode=OneWay}"
-                         IsEnabled="False" ></TextBox>
+                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.StudentId,Mode=TwoWay}"
+                         IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"
+                         IsReadOnly="{Binding ViewModel.ItemIsNotNew,Mode=OneWay}"></TextBox>
                         <Label Style="{StaticResource MyLabel}">姓名</Label>
                         <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Name,Mode=TwoWay}"
                          IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}"

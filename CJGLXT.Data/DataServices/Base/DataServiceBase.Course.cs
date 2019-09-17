@@ -20,12 +20,15 @@ namespace CJGLXT.Data.DataServices.Base
             return await _dataSource.Courses.AsNoTracking().ToListAsync();
         }
 
-        public async Task<int> AddOrUpdateCourseAsync(Course course)
+        public async Task<int> AddCourseAsync(Course course)
         {
-            if (course.CourseId<=0)
-                await _dataSource.Courses.AddAsync(course);
-            else
-                _dataSource.Courses.Update(course);
+            await _dataSource.Courses.AddAsync(course);
+            return await _dataSource.SaveChangesAsync();
+        }
+
+        public async Task<int> UpdateCourseAsync(Course course)
+        {
+            _dataSource.Courses.Update(course);
             return await _dataSource.SaveChangesAsync();
         }
 

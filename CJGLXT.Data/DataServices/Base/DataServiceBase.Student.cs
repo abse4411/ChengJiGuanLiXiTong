@@ -29,6 +29,18 @@ namespace CJGLXT.Data.DataServices.Base
             return await _dataSource.SaveChangesAsync();
         }
 
+        public async Task<int> AddStudentAsync(Student student)
+        {
+            await _dataSource.Students.AddAsync(student);
+            return await _dataSource.SaveChangesAsync();
+        }
+
+        public async Task<int> UpdateStudentAsync(Student student)
+        {
+            _dataSource.Students.Update(student);
+            return await _dataSource.SaveChangesAsync();
+        }
+
         public async Task<int> DeleteStudentAsync(Student student)
         {
             _dataSource.Students.Remove(student);

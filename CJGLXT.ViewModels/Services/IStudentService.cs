@@ -10,7 +10,9 @@ namespace CJGLXT.ViewModels.Services
     {
         Task<StudentModel> GetStudentAsync(string id);
         Task<IList<StudentModel>> GetStudentsAsync();
-        Task<int> AddOrUpdateStudentAsync(StudentModel model);
+        Task<int> AddStudentAsync(StudentModel model);
+        Task<int> UpdateStudentAsync(StudentModel model);
+
         Task<int> DeleteStudentAsync(StudentModel model);
 
     }

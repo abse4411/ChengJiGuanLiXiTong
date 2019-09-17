@@ -30,5 +30,14 @@ namespace CJGLXT.App
         }
 
         public InitDatabaseViewMode ViewModel { get; }
+
+        private void EnterApp(object sender, RoutedEventArgs e)
+        {
+            var current = Application.Current.MainWindow;
+            var login = new LoginWindow();
+            Application.Current.MainWindow = login;
+            current?.Close();
+            login.Show();
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace CJGLXT.Data.Data.EntityConfigurations
         public void Configure(EntityTypeBuilder<Course> builder)
         {
             builder.Property(x => x.Name).IsRequired();
+            builder.Property(x => x.CourseId).ValueGeneratedNever();
         }
     }
 }

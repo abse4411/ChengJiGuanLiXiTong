@@ -23,6 +23,7 @@
                     <Button Margin="4" Command="{Binding ViewModel.CreateDatabaseCommand}"
                             IsEnabled="{Binding ViewModel.IsEnabled,Mode=OneWay}">初始化数据库</Button>
                     <Button Margin="4" Background="LimeGreen"
+                            Click="EnterApp"
                             IsEnabled="{Binding ViewModel.IsSuccess,Mode=OneWay}">进入应用</Button>
                 </StackPanel>
                 <TextBlock Margin="4" HorizontalAlignment="Center" Text="{Binding ViewModel.Message,Mode=TwoWay}"></TextBlock>

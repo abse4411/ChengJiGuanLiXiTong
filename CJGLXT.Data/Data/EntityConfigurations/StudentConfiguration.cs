@@ -13,6 +13,7 @@ namespace CJGLXT.Data.Data.EntityConfigurations
             builder.Property(x => x.Age).IsRequired();
             builder.Property(x => x.Name).IsRequired();
             builder.Property(x => x.Sex).IsRequired();
+            //builder.Property(x => x.StudentId).ValueGeneratedNever();
         }
     }
 }
