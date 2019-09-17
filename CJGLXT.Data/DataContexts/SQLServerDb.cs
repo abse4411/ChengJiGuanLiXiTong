@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using CJGLXT.Data.Common;
 using CJGLXT.Data.Data;
 using CJGLXT.Data.Data.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
@@ -10,12 +11,11 @@ namespace CJGLXT.Data.DataContexts
     public class SqlServerDb: DbContext, IDataSource
     {
         private string _connectionString = "Server=(localdb)\\mssqllocaldb;Database=CJGLXTContext;Trusted_Connection=True;MultipleActiveResultSets=true";
-        public static string DefaultConnectionString { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!String.IsNullOrWhiteSpace(DefaultConnectionString))
-                optionsBuilder.UseSqlServer(DefaultConnectionString);
+            if (!String.IsNullOrWhiteSpace(SqlServeStrings.DefaultConnectionString))
+                optionsBuilder.UseSqlServer(SqlServeStrings.DefaultConnectionString);
             else
             {
                 optionsBuilder.UseSqlServer(_connectionString);

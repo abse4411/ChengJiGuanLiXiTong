@@ -148,6 +148,9 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\Int32Converter.cs" />
     <Compile Include="Converters\NullableInt32Converter.cs" />
+    <Compile Include="InitDbWindow.xaml.cs">
+      <DependentUpon>InitDbWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
     <Compile Include="Views\Student\StudentsView.xaml.cs">
       <DependentUpon>StudentsView.xaml</DependentUpon>
     </Compile>
+    <Page Include="InitDbWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
