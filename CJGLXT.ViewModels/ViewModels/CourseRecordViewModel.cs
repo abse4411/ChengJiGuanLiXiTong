@@ -48,12 +48,9 @@ namespace CJGLXT.ViewModels.ViewModels
             {
                 try
                 {
-                    var item = await RecordService.GetCourseRecordAsync(ViewModelArgs.StudentId, ViewModelArgs.CourseId);
-                    Item = item ?? new CourseRecordModel { StudentId = ViewModelArgs.StudentId,CourseId = ViewModelArgs.CourseId, IsEmpty = true };
-                    if (item == null)
-                        IsEditMode = true;
-                    else
-                        IsEditMode = false;
+                    Item = await RecordService.GetCourseRecordAsync(ViewModelArgs.StudentId, ViewModelArgs.CourseId);
+                    //Item = item ?? new CourseRecordModel { StudentId = ViewModelArgs.StudentId,CourseId = ViewModelArgs.CourseId, IsEmpty = true };
+                    IsEditMode = false;
                 }
                 catch (Exception e)
                 {

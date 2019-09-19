@@ -67,5 +67,11 @@ namespace CJGLXT.App
             }
 
         }
+
+        private void Password_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.Key==Key.Enter)
+                LoginClicked(null, null);
+        }
     }
 }
