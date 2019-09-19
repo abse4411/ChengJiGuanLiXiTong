@@ -16,31 +16,34 @@ using System.Windows.Shapes;
 using CJGLXT.App.Configuration;
 using CJGLXT.ViewModels.ViewModels;
 
-namespace CJGLXT.App.Views.Score
+namespace CJGLXT.App.Views.StudentCourse
 {
     /// <summary>
-    /// Interaction logic for CourseRecordView.xaml
+    /// Interaction logic for StudentCourseView.xaml
     /// </summary>
-    public partial class CourseRecordView : Page
+    public partial class StudentCourseView : Page
     {
-        public CourseRecordView()
+        public StudentCourseView()
         {
-            ViewModel = ServiceLocator.Current().GetService<CourseRecordListViewModel>();
-            CourseRecordViewModel = ViewModel.CourseRecordViewModel;
+            ViewModel = ServiceLocator.Current().GetService<StudentCourseRecordListViewModel>();
+            ViewModel.StudentId = MainPage.User.UserId;
+            CourseDetailsViewModel = ViewModel.CourseDetailsViewModel;
             this.DataContext = this;
             InitializeComponent();
-            CourseRecordViewModel = null;
+            CourseDetailsViewModel = null;
             ViewModel.Refresh();
         }
+        public StudentCourseRecordListViewModel ViewModel { get; }
 
-        public CourseRecordListViewModel ViewModel { get; }
-        public static CourseRecordViewModel CourseRecordViewModel { get; private set; }
+        public static CourseDetailsViewModel CourseDetailsViewModel { get; private set; }
 
-        private void Selector_OnSelected(object sender, SelectionChangedEventArgs e)
+        private void Selector_OnSelected(object sender, RoutedEventArgs e)
         {
             ViewModel.OnSelected();
         }
 
+
+        //Sort
         private void List_OnClick(object sender, RoutedEventArgs e)
         {
             if (e.OriginalSource is GridViewColumnHeader)

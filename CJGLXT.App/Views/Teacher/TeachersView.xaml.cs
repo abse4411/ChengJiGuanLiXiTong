@@ -32,7 +32,9 @@ namespace CJGLXT.App.Views.Teacher
             InitializeComponent();
             TeacherDetailsViewModel = null;
             TeacherEvaluationViewModel = null;
+            ViewModel.Refresh();
         }
+
         public TeacherListViewModel ViewModel { get; }
 
         public static TeacherDetailsViewModel TeacherDetailsViewModel { get; private set; }

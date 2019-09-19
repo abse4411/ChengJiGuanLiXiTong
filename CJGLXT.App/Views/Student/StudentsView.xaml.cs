@@ -33,6 +33,7 @@ namespace CJGLXT.App.Views.Student
             InitializeComponent();
             StudentDetailsViewModel = null;
             StudentEvaluationViewModel = null;
+            ViewModel.Refresh();
         }
         public StudentListViewModel ViewModel { get; }
 

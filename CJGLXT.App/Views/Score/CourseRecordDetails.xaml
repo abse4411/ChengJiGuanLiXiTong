@@ -43,15 +43,19 @@
                                 VerticalAlignment="Bottom"
                                 HorizontalAlignment="Right">
                         <Button Margin="4"  Command="{Binding ViewModel.SaveCommand}" 
+                                IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                         Visibility="{Binding ViewModel.IsEditMode,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                 >保存</Button>
                         <Button Margin="4"  Command="{Binding ViewModel.EditCommand}"
+                                IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                         Visibility="{Binding ViewModel.IsReadOnly,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                 >编辑</Button>
                         <Button Margin="4"  Command="{Binding ViewModel.CancelCommand}"
+                                IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                         Visibility="{Binding ViewModel.IsEditMode,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                 >取消</Button>
                         <Button Margin="4" Command="{Binding ViewModel.DeleteCommand}"
+                                IsEnabled="{Binding ViewModel.IsDataAvailable,Mode=OneWay}"
                         Visibility="{Binding ViewModel.IsReadOnly,Mode=OneWay,Converter={StaticResource BoolToVisibilityConverter}}"
                 >删除</Button>
                     </StackPanel>

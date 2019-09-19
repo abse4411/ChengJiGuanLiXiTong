@@ -8,24 +8,24 @@ using CJGLXT.ViewModels.ViewModels.Common;
 
 namespace CJGLXT.ViewModels.ViewModels
 {
-     public class CourseRecordListViewModel:GenericListViewModel<CourseRecordModel>
+    public class StudentCourseRecordListViewModel:GenericListViewModel<CourseRecordModel>
     {
-        public ICourseRecordService CourseRecordService { get; }
-        public CourseRecordArgs Args { get;}
-        public CourseRecordViewModel CourseRecordViewModel { get; }
+        public IStudentScoreService StudentScoreService { get; }
+        public CourseDetailsViewModel CourseDetailsViewModel { get; }
+        public CourseArgs Args { get;private set; }
+        public string StudentId { get; set; }
 
-        public CourseRecordListViewModel(ICourseRecordService courseRecordService,IDialogService dialogService) : base(dialogService)
+        public StudentCourseRecordListViewModel(IDialogService dialogService,IStudentScoreService studentScoreService) : base(dialogService)
         {
-            CourseRecordService = courseRecordService;
-            CourseRecordViewModel=new CourseRecordViewModel(dialogService, courseRecordService);
-            Args=new CourseRecordArgs();
+            StudentScoreService = studentScoreService;
+            CourseDetailsViewModel = new CourseDetailsViewModel(dialogService,studentScoreService);
+            Args =new CourseArgs();
         }
 
         protected override async void OnNew()
         {
-            Args.StudentId = null;
-            Args.CourseId = 0;
-            await CourseRecordViewModel.LoadAsync(Args);
+            Args.CourseId = -1;
+            await CourseDetailsViewModel.LoadAsync(Args);
         }
 
         protected override void OnRefresh()
@@ -45,9 +45,8 @@ namespace CJGLXT.ViewModels.ViewModels
         {
             if (SelectedItem != null)
             {
-                Args.StudentId = SelectedItem.StudentId;
                 Args.CourseId = SelectedItem.CourseId;
-                await CourseRecordViewModel.LoadAsync(Args);
+                await CourseDetailsViewModel.LoadAsync(Args);
             }
         }
 
@@ -57,7 +56,7 @@ namespace CJGLXT.ViewModels.ViewModels
             OnNew();
             try
             {
-                Items = await CourseRecordService.GetCourseRecordsAsync();
+                Items = await StudentScoreService.GetCourseRecordsAsync(StudentId);
             }
             catch (Exception e)
             {

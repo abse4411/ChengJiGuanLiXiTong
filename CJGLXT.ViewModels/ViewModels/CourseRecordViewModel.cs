@@ -22,7 +22,7 @@ namespace CJGLXT.ViewModels.ViewModels
     {
         public ICourseRecordService RecordService { get; }
 
-        public CourseRecordViewModel(ICourseRecordService recordService,IDialogService dialogService) : base(dialogService)
+        public CourseRecordViewModel(IDialogService dialogService, ICourseRecordService recordService) : base(dialogService)
         {
             RecordService = recordService;
         }
@@ -41,6 +41,7 @@ namespace CJGLXT.ViewModels.ViewModels
             if (ViewModelArgs.IsNew)
             {
                 Item = new CourseRecordModel();
+                EditableItem = new CourseRecordModel();
                 IsEditMode = true;
             }
             else

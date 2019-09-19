@@ -15,6 +15,9 @@ namespace CJGLXT.ViewModels.Models
 
         public static CourseModel CreateEmpty() => new CourseModel { CourseId = -1, IsEmpty = true };
 
+        public bool IsNew => CourseId<=0;
+
+
         public override void Merge(ObservableObject source)
         {
             if (source is CourseModel model)

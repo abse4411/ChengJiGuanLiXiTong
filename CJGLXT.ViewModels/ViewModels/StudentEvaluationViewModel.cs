@@ -40,7 +40,7 @@ namespace CJGLXT.ViewModels.ViewModels
                 if (String.IsNullOrWhiteSpace(ViewModelArgs.StudentId) || String.IsNullOrWhiteSpace(ViewModelArgs.TeacherId))
                 {
                     Item = null;
-                    IsEditMode = true;
+                    IsEditMode = false;
                 }
                 else
                 {

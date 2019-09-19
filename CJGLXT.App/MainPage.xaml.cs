@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using CJGLXT.App.Views.Rank;
 using CJGLXT.App.Views.Score;
 using CJGLXT.App.Views.Student;
+using CJGLXT.App.Views.StudentCourse;
 using CJGLXT.App.Views.Teacher;
 using CJGLXT.ViewModels.Models;
 
@@ -68,7 +69,7 @@ namespace CJGLXT.App
                     MainWindow.Frame.NavigationService.Navigate(new TeachersView());
                     break;
                 case "CCard":
-                    MainWindow.Frame.NavigationService.Navigate(new CourseRecordView());
+                    MainWindow.Frame.NavigationService.Navigate(new StudentCourseView());
                     break;
                 default:
                     break;

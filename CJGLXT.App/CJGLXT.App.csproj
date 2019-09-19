@@ -166,6 +166,7 @@
     <Compile Include="Services\LoginService.cs" />
     <Compile Include="Services\RankService.cs" />
     <Compile Include="Services\StudentEvaluationService.cs" />
+    <Compile Include="Services\StudentScoreService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Services\TeacherService.cs" />
     <Compile Include="UserInfo.cs" />
@@ -180,6 +181,12 @@
     </Compile>
     <Compile Include="Views\Score\CourseRecordView.xaml.cs">
       <DependentUpon>CourseRecordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentCourse\CourseDetails.xaml.cs">
+      <DependentUpon>CourseDetails.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentCourse\StudentCourseView.xaml.cs">
+      <DependentUpon>StudentCourseView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Student\StudentDetails.xaml.cs">
       <DependentUpon>StudentDetails.xaml</DependentUpon>
@@ -243,6 +250,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Score\CourseRecordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentCourse\CourseDetails.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentCourse\StudentCourseView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

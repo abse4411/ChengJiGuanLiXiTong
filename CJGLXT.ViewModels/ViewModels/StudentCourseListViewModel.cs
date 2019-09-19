@@ -7,7 +7,7 @@ using CJGLXT.ViewModels.ViewModels.Common;
 
 namespace CJGLXT.ViewModels.ViewModels
 {
-    public class StudentCourseListViewModel:GenericListViewModel<CourseRecordModel>
+    public class StudentCourseListViewModel : GenericListViewModel<CourseRecordModel>
     {
         public StudentCourseListViewModel(IDialogService dialogService) : base(dialogService)
         {

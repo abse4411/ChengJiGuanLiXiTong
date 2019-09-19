@@ -25,21 +25,22 @@ namespace CJGLXT.App.Configuration
             serviceCollection.AddSingleton<ITeacherService, TeacherService>();
             serviceCollection.AddSingleton<IStudentEvaluationService, StudentEvaluationService>();
             serviceCollection.AddScoped<ICourseRecordService, CourseRecordService>();
+            serviceCollection.AddScoped<IStudentScoreService, StudentScoreService>();
             serviceCollection.AddScoped<IRankService, RankService>();
             serviceCollection.AddScoped<ILoginService, LoginService>();
             serviceCollection.AddSingleton<IDialogService, DialogService>();
 
-            serviceCollection.AddTransient<StudentDetailsViewModel>();
-            serviceCollection.AddTransient<StudentEvaluationViewModel>();
+
+
             serviceCollection.AddTransient<StudentListViewModel>();
-            serviceCollection.AddTransient<TeacherDetailsViewModel>();
-            serviceCollection.AddTransient<TeacherEvaluationViewModel>();
+
             serviceCollection.AddTransient<TeacherListViewModel>();
-            serviceCollection.AddTransient<CourseRecordViewModel>();
+
             serviceCollection.AddTransient<LoginViewModel>();
             serviceCollection.AddTransient<CourseRecordListViewModel>();
             serviceCollection.AddTransient<StudentRankListViewModel>();
             serviceCollection.AddTransient<StudentCourseListViewModel>();
+            serviceCollection.AddTransient<StudentCourseRecordListViewModel>();
             serviceCollection.AddTransient<InitDatabaseViewMode>();
 
 

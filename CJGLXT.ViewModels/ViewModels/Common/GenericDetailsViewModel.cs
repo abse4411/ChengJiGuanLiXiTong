@@ -21,7 +21,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
 
         public virtual string Title { get; }
 
-        private TModel _item = new TModel();
+        private TModel _item;
         public TModel Item
         {
             get => _item;
@@ -36,7 +36,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
             }
         }
 
-        private TModel _editableItem = null;
+        private TModel _editableItem=new TModel();
         public TModel EditableItem
         {
             get => _editableItem;
@@ -64,7 +64,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
         private bool _isEnabled = true;
         public bool IsEnabled
         {
-            get => _isEnabled;
+            get => _isEnabled && IsDataAvailable;
             set => Set(ref _isEnabled, value);
         }
 
@@ -102,14 +102,6 @@ namespace CJGLXT.ViewModels.ViewModels.Common
         {
             if (ItemIsNew)
             {
-                //if (NavigationService.CanGoBack)
-                //{
-                //    NavigationService.GoBack();
-                //}
-                //else
-                //{
-                //    NavigationService.CloseViewAsync();
-                //}
                 return;
             }
 
@@ -136,25 +128,11 @@ namespace CJGLXT.ViewModels.ViewModels.Common
         public virtual async Task SaveAsync()
         {
             IsEnabled = false;
-            bool isNew = ItemIsNew;
             if (await SaveItemAsync(EditableItem))
             {
                 Item.Merge(EditableItem);
-                Item.NotifyChanges();
-                NotifyPropertyChanged(nameof(Title));
-                EditableItem = Item;
-
-                if (isNew)
-                {
-                    //MessageService.Send(this, "NewItemSaved", Item);
-                }
-                else
-                {
-                    //MessageService.Send(this, "ItemChanged", Item);
-                }
+                NotifyChanges();
                 IsEditMode = false;
-
-                NotifyPropertyChanged(nameof(ItemIsNew));
             }
             IsEnabled = true;
         }
@@ -176,8 +154,7 @@ namespace CJGLXT.ViewModels.ViewModels.Common
                 if (await DeleteItemAsync(model))
                 {
                     await DialogService.ShowAsync("删除成功", string.Empty);
-                    IsEditMode = true;
-                    Item = new TModel();
+                    Item = null;
                 }
                 else
                 {

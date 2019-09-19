@@ -26,8 +26,7 @@ namespace CJGLXT.ViewModels.ViewModels
             StudentService = studentService;
         }
 
-        public override string Title => (Item?.IsNew ?? true) ? "新建学生" : TitleEdit;
-        public string TitleEdit => Item == null ? "编辑学生" : $"{Item.Name}的个人信息";
+        public override string Title => (Item?.IsNew ?? true) ? "新建学生" : $"{Item.Name}的个人信息";
 
         public override bool ItemIsNew => Item?.IsNew ?? true;
 
@@ -40,6 +39,7 @@ namespace CJGLXT.ViewModels.ViewModels
             if (ViewModelArgs.IsNew)
             {
                 Item = new StudentModel();
+                EditableItem=new StudentModel();
                 IsEditMode = true;
             }
             else

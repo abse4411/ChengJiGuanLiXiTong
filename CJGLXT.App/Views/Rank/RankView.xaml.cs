@@ -19,6 +19,7 @@ namespace CJGLXT.App.Views.Rank
             this.DataContext = this;
             InitializeComponent();
             StudentCourseListViewModel = null;
+            ViewModel.Refresh();
         }
 
         public StudentRankListViewModel ViewModel { get;}
