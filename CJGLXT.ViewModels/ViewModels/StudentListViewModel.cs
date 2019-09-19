@@ -22,8 +22,8 @@ namespace CJGLXT.ViewModels.ViewModels
         public IStudentService StudentService { get; }
         public StudentDetailsViewModel StudentDetailsViewModel { get; }
         public StudentEvaluationViewModel StudentEvaluationViewModel { get; }
-        public StudentDetailsArgs SArgs { get; set; }
-        public StudentEvaluationArgs EArgs { get; set; }
+        public StudentDetailsArgs SArgs { get;  }
+        public StudentEvaluationArgs EArgs { get;  }
 
 
         protected override async void OnNew()

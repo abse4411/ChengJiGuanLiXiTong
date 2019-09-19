@@ -11,7 +11,7 @@ namespace CJGLXT.ViewModels.ViewModels
      public class CourseRecordListViewModel:GenericListViewModel<CourseRecordModel>
     {
         public ICourseRecordService CourseRecordService { get; }
-        public CourseRecordArgs Args { get; set; }
+        public CourseRecordArgs Args { get;}
         public CourseRecordViewModel CourseRecordViewModel { get; }
 
         public CourseRecordListViewModel(IDialogService dialogService,ICourseRecordService courseRecordService) : base(dialogService)

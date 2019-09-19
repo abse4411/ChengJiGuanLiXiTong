@@ -37,7 +37,7 @@ namespace CJGLXT.ViewModels.ViewModels
 
             try
             {
-                if (String.IsNullOrWhiteSpace(args.StudentId) || String.IsNullOrWhiteSpace(args.TeacherId))
+                if (String.IsNullOrWhiteSpace(ViewModelArgs.StudentId) || String.IsNullOrWhiteSpace(ViewModelArgs.TeacherId))
                 {
                     Item = null;
                     IsEditMode = true;

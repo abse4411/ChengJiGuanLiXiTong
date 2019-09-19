@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using CJGLXT.App.Views.Rank;
 using CJGLXT.App.Views.Score;
 using CJGLXT.App.Views.Student;
+using CJGLXT.App.Views.Teacher;
 using CJGLXT.ViewModels.Models;
 
 namespace CJGLXT.App
@@ -30,7 +31,7 @@ namespace CJGLXT.App
         {
             this.DataContext = this;
             InitializeComponent();
-            if(IsStudent)
+            if (IsStudent)
                 this.MainGrid.Children.Remove(tGrid);
             else
                 this.MainGrid.Children.Remove(sGrid);
@@ -46,6 +47,7 @@ namespace CJGLXT.App
             if (sender is MaterialDesignThemes.Wpf.Card card)
             {
                 var senderName = card.Name;
+
                 if (User.UserType == UserType.Teacher)
                 {
                     TeacherPageNavigate(senderName);
@@ -60,7 +62,17 @@ namespace CJGLXT.App
 
         private void StudentPageNavigate(string pageName)
         {
-
+            switch (pageName)
+            {
+                case "LCard":
+                    MainWindow.Frame.NavigationService.Navigate(new TeachersView());
+                    break;
+                case "CCard":
+                    MainWindow.Frame.NavigationService.Navigate(new CourseRecordView());
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void TeacherPageNavigate(string pageName)
@@ -76,13 +88,15 @@ namespace CJGLXT.App
                 case "TCard":
                     MainWindow.Frame.NavigationService.Navigate(new RankView());
                     break;
-                case "ECard":
-                    User = null;
-                    MainWindow.CloseCurrent();
-                    break;
                 default:
                     break;
             }
+        }
+
+        private void Exit(object sender, MouseButtonEventArgs e)
+        {
+            User = null;
+            MainWindow.CloseCurrent();
         }
     }
 }

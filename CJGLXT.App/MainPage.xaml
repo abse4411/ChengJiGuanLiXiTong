@@ -42,8 +42,8 @@
                     </Label>
                 </StackPanel>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="ECard"
-                VerticalAlignment="Stretch" MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp"
+            <materialDesign:Card 
+                VerticalAlignment="Stretch" MouseLeftButtonUp="Exit"
                 Grid.Row="0" Foreground="Black" Background="OrangeRed" 
                 Grid.Column="4" Grid.ColumnSpan="3">
                 <StackPanel VerticalAlignment="Center">
@@ -101,7 +101,78 @@
         </Grid>
         <Grid x:Name="sGrid" Margin="10" Visibility="{Binding IsStudent,Mode=OneTime,Converter={StaticResource BoolToVisibilityConverter}}"
               HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Button >SADASDASdad</Button>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <materialDesign:Card 
+                VerticalAlignment="Stretch"
+                     Grid.Row="0" Foreground="Black" Background="GreenYellow"
+                     Grid.Column="0" Grid.ColumnSpan="3">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Label VerticalAlignment="Center" 
+                           FontSize="32">
+                        你好，
+                    </Label>
+                    <Label VerticalAlignment="Center" 
+                           FontSize="32" Content="{Binding User.UserName,Mode=OneTime}">
+                    </Label>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card 
+                VerticalAlignment="Stretch" MouseLeftButtonUp="Exit"
+                Grid.Row="0" Foreground="Black" Background="OrangeRed" 
+                Grid.Column="4" Grid.ColumnSpan="3">
+                <StackPanel VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="ExitRun" 
+                                              HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                             Height="100" Width="100"></materialDesign:PackIcon>
+                    <Label HorizontalAlignment="Center"
+                           FontSize="32">
+                        退出登录
+                    </Label>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card x:Name="CCard"
+                VerticalAlignment="Stretch"  MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp"
+                     Grid.Row="2" Grid.RowSpan="3" Foreground="Black" Background="SkyBlue"
+                     Grid.Column="0" Grid.ColumnSpan="3">
+                <StackPanel VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="FormatListBulletedType" 
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                                 Height="100" Width="100"></materialDesign:PackIcon>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           FontSize="32">
+                        查看成绩
+                    </Label>
+                </StackPanel>
+            </materialDesign:Card>
+            <materialDesign:Card x:Name="LCard"
+                VerticalAlignment="Stretch" MouseLeftButtonUp="UIElement_OnMouseLeftButtonUp"
+                     Grid.Row="2" Grid.RowSpan="3"  Foreground="Black" Background="LightSeaGreen"
+                     Grid.Column="4" Grid.ColumnSpan="3">
+                <StackPanel VerticalAlignment="Center">
+                    <materialDesign:PackIcon Kind="Message" 
+                                 VerticalAlignment="Center" HorizontalAlignment="Center"
+                                 Height="100" Width="100"></materialDesign:PackIcon>
+                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" 
+                           FontSize="32">
+                        老师寄语
+                    </Label>
+                </StackPanel>
+            </materialDesign:Card>
         </Grid>
     </Grid>
 </Page>

@@ -22,6 +22,7 @@ namespace CJGLXT.App.Configuration
         {
             serviceCollection.AddSingleton<IDataServiceFactory, DataServiceFactory>();
             serviceCollection.AddSingleton<IStudentService, StudentService>();
+            serviceCollection.AddSingleton<ITeacherService, TeacherService>();
             serviceCollection.AddSingleton<IStudentEvaluationService, StudentEvaluationService>();
             serviceCollection.AddScoped<ICourseRecordService, CourseRecordService>();
             serviceCollection.AddScoped<IRankService, RankService>();
@@ -31,6 +32,9 @@ namespace CJGLXT.App.Configuration
             serviceCollection.AddTransient<StudentDetailsViewModel>();
             serviceCollection.AddTransient<StudentEvaluationViewModel>();
             serviceCollection.AddTransient<StudentListViewModel>();
+            serviceCollection.AddTransient<TeacherDetailsViewModel>();
+            serviceCollection.AddTransient<TeacherEvaluationViewModel>();
+            serviceCollection.AddTransient<TeacherListViewModel>();
             serviceCollection.AddTransient<CourseRecordViewModel>();
             serviceCollection.AddTransient<LoginViewModel>();
             serviceCollection.AddTransient<CourseRecordListViewModel>();

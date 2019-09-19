@@ -17,7 +17,6 @@ namespace CJGLXT.ViewModels.Models
 
         public string Sex { get; set; }
 
-
         public static StudentModel CreateEmpty() => new StudentModel { StudentId = null, IsEmpty = true };
 
         public bool IsNew => string.IsNullOrWhiteSpace(StudentId);

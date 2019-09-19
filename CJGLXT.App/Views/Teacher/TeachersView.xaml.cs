@@ -1,34 +1,51 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using CJGLXT.App.Configuration;
 using CJGLXT.ViewModels.ViewModels;
 
-namespace CJGLXT.App.Views.Rank
+namespace CJGLXT.App.Views.Teacher
 {
     /// <summary>
-    /// Interaction logic for RankView.xaml
+    /// Interaction logic for TeacherView.xaml
     /// </summary>
-    public partial class RankView : Page
+    public partial class TeachersView : Page
     {
-        public RankView()
+        public TeachersView()
         {
-            ViewModel = ServiceLocator.Current().GetService<StudentRankListViewModel>();
-            StudentCourseListViewModel = ViewModel.StudentCourseListViewModel;
+            ViewModel = ServiceLocator.Current().GetService<TeacherListViewModel>();
+            TeacherDetailsViewModel = ViewModel.TeacherDetailsViewModel;
+            TeacherEvaluationViewModel = ViewModel.TeacherEvaluationViewModel;
             this.DataContext = this;
             InitializeComponent();
-            StudentCourseListViewModel = null;
+            TeacherDetailsViewModel = null;
+            TeacherEvaluationViewModel = null;
         }
+        public TeacherListViewModel ViewModel { get; }
 
-        public StudentRankListViewModel ViewModel { get;}
-        public static StudentCourseListViewModel StudentCourseListViewModel { get; private set; }
+        public static TeacherDetailsViewModel TeacherDetailsViewModel { get; private set; }
+        public static TeacherEvaluationViewModel TeacherEvaluationViewModel { get; private set; }
 
-        private void Selector_OnSelected(object sender, SelectionChangedEventArgs e)
+        private void Selector_OnSelected(object sender, RoutedEventArgs e)
         {
+            ViewModel.EArgs.StudentId = MainPage.User.UserId;
             ViewModel.OnSelected();
         }
 
+
+        //Sort
         private void List_OnClick(object sender, RoutedEventArgs e)
         {
             if (e.OriginalSource is GridViewColumnHeader)
