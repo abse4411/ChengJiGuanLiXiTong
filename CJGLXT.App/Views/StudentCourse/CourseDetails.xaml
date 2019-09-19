@@ -21,7 +21,7 @@
                         <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Name,Mode=OneWay}"
                                  IsReadOnly="True"></TextBox>
                         <Label Style="{StaticResource MyLabel}">描述</Label>
-                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Description,Mode=OneWay,Converter={StaticResource Int32Converter}}"
+                        <TextBox Margin="10,0,10,10" Text="{Binding ViewModel.EditableItem.Description,Mode=OneWay}"
                                  IsReadOnly="True"></TextBox>
                     </StackPanel>
                 </Grid>

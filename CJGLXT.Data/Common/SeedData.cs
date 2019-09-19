@@ -28,14 +28,14 @@ namespace CJGLXT.Data.Common
             result.Add(new Student
             {
                 StudentId = "221701341",
-                Name = "王明",
+                Name = "刘旭",
                 Age = 22,
                 Sex = "男"
             });
             result.Add(new Student
             {
                 StudentId = "221701342",
-                Name = "王明",
+                Name = "徐东",
                 Age = 22,
                 Sex = "男"
             });
