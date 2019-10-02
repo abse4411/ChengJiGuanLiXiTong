@@ -43,7 +43,7 @@
                             </DoubleAnimation>
                             <DoubleAnimation Storyboard.TargetName="Blur"
                                              Storyboard.TargetProperty="Radius" 
-                                             From="0" To="50" Duration="0:0:0.2"
+                                             From="0" To="25" Duration="0:0:0.2"
                                              AutoReverse="False">
                             </DoubleAnimation>
                         </Storyboard>
