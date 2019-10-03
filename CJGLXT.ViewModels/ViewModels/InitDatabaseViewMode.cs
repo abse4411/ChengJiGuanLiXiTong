@@ -96,7 +96,7 @@ namespace CJGLXT.ViewModels.ViewModels
             catch (Exception e)
             {
                 _isSuccess = false;
-                Message = $"初始化数据库失败";
+                Message = $"数据库连接失败";
                 await DialogService.ShowAsync("数据库连接失败", e.InnerException?.Message ?? e.Message);
             }
             IsEnabled = true;
