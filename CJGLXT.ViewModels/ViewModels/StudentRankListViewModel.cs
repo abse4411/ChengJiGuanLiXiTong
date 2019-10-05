@@ -21,7 +21,7 @@ namespace CJGLXT.ViewModels.ViewModels
 
         protected override void OnNew()
         {
-            throw new NotImplementedException();
+            StudentCourseListViewModel.Items = null;
         }
 
         protected override void OnRefresh()
@@ -48,6 +48,7 @@ namespace CJGLXT.ViewModels.ViewModels
         private async Task<bool> RefreshAsync()
         {
             Items = null;
+            OnNew();
             try
             {
                 Items = await RankService.GetStudentRankListAsync();

@@ -83,12 +83,13 @@ namespace CJGLXT.App
                                                                         + "Version: 2.2.0" + Environment.NewLine
                                                                         + "License: Apache-2.0" + Environment.NewLine
                                                                         + "© Microsoft Corporation. All rights reserved." + Environment.NewLine+ Environment.NewLine;
-            var va = "Name: XAML VanArsdel Inventory Sample" + Environment.NewLine
+            var vais = "Name: XAML VanArsdel Inventory Sample" + Environment.NewLine
                                                                       + "SourceCode: https://github.com/Microsoft/InventorySample" + Environment.NewLine
                                                                       + "Version: 1.2.7.0" + Environment.NewLine
                                                                       + "License: MIT" + Environment.NewLine
                                                                       + "Copyright (c) Microsoft Corporation. All rights reserved." + Environment.NewLine + Environment.NewLine;
-            MessageBox.Show(an+mdt + efc + efcss + dj+va, "技术致谢");
+            var claims = "声明：本软件仅供提交作业使用，请勿用于其他用途。";
+            MessageBox.Show(an+mdt + efc + efcss + dj+ vais + claims, "技术致谢");
         }
     }
 
